@@ -307,11 +307,22 @@
           <p class="eyebrow">PRICING</p>
           <h2>Start free. Upgrade when it pays for itself.</h2>
         </div>
+
+        <!-- Billing toggle: radios drive the price swap via CSS, no JS -->
+        <input type="radio" name="billing" id="bill-yearly" class="billing__input" checked>
+        <input type="radio" name="billing" id="bill-monthly" class="billing__input">
+        <div class="billing" role="radiogroup" aria-label="Billing period">
+          <label class="billing__opt billing__opt--yearly" for="bill-yearly">
+            Yearly <span class="billing__save">SAVE 40%</span>
+          </label>
+          <label class="billing__opt billing__opt--monthly" for="bill-monthly">Monthly</label>
+        </div>
+
         <div class="grid grid-3 plans">
           <div class="plan">
             <div>
               <div class="plan__name">Free</div>
-              <div class="plan__price">$0<span>/mo</span></div>
+              <div class="plan__price">$0<span class="plan__per">/mo</span></div>
             </div>
             <ul class="plan__features">
               <li>Up to 2 properties</li>
@@ -325,7 +336,14 @@
             <div class="plan__badge">MOST POPULAR</div>
             <div>
               <div class="plan__name">Pro</div>
-              <div class="plan__price">$15<span>/mo</span></div>
+              <div class="plan__price">
+                <span class="price--yearly">$15<span class="plan__per">/mo</span></span>
+                <span class="price--monthly">$25<span class="plan__per">/mo</span></span>
+              </div>
+              <div class="plan__billed">
+                <span class="price--yearly">billed yearly</span>
+                <span class="price--monthly">billed monthly</span>
+              </div>
             </div>
             <ul class="plan__features">
               <li>Unlimited properties</li>
@@ -339,7 +357,7 @@
           <div class="plan">
             <div>
               <div class="plan__name">Elite</div>
-              <div class="plan__price">$45<span>/mo</span></div>
+              <div class="plan__price plan__price--soon">Coming soon</div>
             </div>
             <ul class="plan__features">
               <li>Everything in Pro</li>

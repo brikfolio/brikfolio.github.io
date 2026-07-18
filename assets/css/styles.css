@@ -447,7 +447,8 @@ input::placeholder {
 
 .mock__body {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
+  /* 50/50 so the panel divider lands on the center KPI gridline above */
+  grid-template-columns: 1fr 1fr;
   gap: 1px;
   background: var(--line-soft);
   border-top: 1px solid var(--line-soft);
@@ -456,6 +457,8 @@ input::placeholder {
 .mock__panel {
   background: var(--white);
   padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
 }
 
 .mock__panel--feed {
@@ -473,6 +476,9 @@ input::placeholder {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  /* Minimum breathing room before the ledger; the ledger's auto top margin
+     adds more on desktop where the panel stretches taller */
+  margin-bottom: 16px;
 }
 
 .bar-row {
@@ -514,9 +520,11 @@ input::placeholder {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-top: 18px;
+  /* auto pushes the ledger to the panel floor so it lines up with the
+     feed panel's last card, removing the dead space in the left panel */
+  margin-top: auto;
+  padding-top: 18px;
   border-top: 1px solid var(--line-softer);
-  padding-top: 14px;
 }
 
 .ledger__row {
@@ -612,6 +620,9 @@ input::placeholder {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
+  /* Center each stat within its column so the row reads as balanced
+     rather than left-weighted */
+  text-align: center;
 }
 
 .stats__value {
@@ -750,9 +761,15 @@ input::placeholder {
   margin-top: 6px;
 }
 
-.plan__price span {
+.plan__per {
   font-size: 15px;
   font-weight: 500;
+  color: var(--text-on-navy);
+}
+
+/* Elite's placeholder price — smaller than a real figure */
+.plan__price--soon {
+  font-size: 24px;
   color: var(--text-on-navy);
 }
 
@@ -797,7 +814,17 @@ input::placeholder {
   color: var(--ink);
 }
 
-.plan--featured .plan__price span {
+.plan--featured .plan__per {
+  color: var(--text-subtle);
+}
+
+.plan__billed {
+  font-size: 12.5px;
+  color: var(--text-on-navy);
+  margin-top: 4px;
+}
+
+.plan--featured .plan__billed {
   color: var(--text-subtle);
 }
 
@@ -828,6 +855,84 @@ input::placeholder {
   color: #0d3b36;
   border-radius: var(--r-pill);
   padding: 5px 12px;
+}
+
+/* --- Billing toggle (pure CSS: radios drive the price swap) -------------- */
+/* Visually hidden but focusable; kept as siblings of .billing and .plans so
+   the :checked state can reach both via the general-sibling combinator. */
+.billing__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.billing {
+  width: fit-content;
+  margin: 28px auto 0;
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background: rgba(253, 252, 250, 0.08);
+  border: 1px solid rgba(253, 252, 250, 0.14);
+  border-radius: var(--r-pill);
+}
+
+.billing__opt {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 20px;
+  border-radius: var(--r-pill);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-on-navy);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.billing__opt:hover {
+  color: var(--paper);
+}
+
+.billing__save {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+  color: #0d3b36;
+  background: var(--accent-bright);
+  border-radius: var(--r-pill);
+  padding: 2px 7px;
+}
+
+/* Active segment: whichever radio is checked lights its label */
+#bill-yearly:checked ~ .billing .billing__opt--yearly,
+#bill-monthly:checked ~ .billing .billing__opt--monthly {
+  background: var(--paper);
+  color: var(--navy);
+}
+
+/* Keyboard focus ring on the active-target label */
+#bill-yearly:focus-visible ~ .billing .billing__opt--yearly,
+#bill-monthly:focus-visible ~ .billing .billing__opt--monthly {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 2px;
+}
+
+/* Price swap — yearly is the default shown state; monthly hidden until picked */
+.price--monthly {
+  display: none;
+}
+
+#bill-monthly:checked ~ .plans .price--yearly {
+  display: none;
+}
+
+#bill-monthly:checked ~ .plans .price--monthly {
+  display: inline;
 }
 
 /* --- Final CTA ----------------------------------------------------------- */
