@@ -323,6 +323,11 @@ input::placeholder {
   font-weight: 500;
 }
 
+.nav__login {
+  font-weight: 600;
+  color: var(--navy);
+}
+
 /* --- Hero ---------------------------------------------------------------- */
 .hero {
   background: linear-gradient(180deg, var(--paper) 0%, var(--sand) 100%);
@@ -947,9 +952,13 @@ input::placeholder {
     margin-top: 40px;
   }
 
-  /* Hide secondary nav links on small screens; the CTA stays reachable */
-  .nav__links a:not(.btn--nav) {
+  /* Hide section anchors on small screens; Login + CTA stay reachable */
+  .nav__links a:not(.btn--nav):not(.nav__login) {
     display: none;
+  }
+
+  .nav__links {
+    gap: 16px;
   }
 
   .bar-row__label {
