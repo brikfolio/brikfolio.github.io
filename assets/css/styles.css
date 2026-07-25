@@ -1083,3 +1083,23 @@ input::placeholder {
     scroll-behavior: auto !important;
   }
 }
+
+/* ==========================================================================
+   TEMPORARY — "Coming soon" placeholders standing in for the waitlist CTAs.
+   The real "Join waitlist" buttons are commented out in index.html and will
+   be restored in a day or two. To revert: delete this block, uncomment the
+   buttons, and remove the <span class="... is-soon"> placeholders.
+   ========================================================================== */
+.is-soon {
+  pointer-events: none;
+}
+
+.btn--primary.is-soon,
+.btn--nav.is-soon {
+  background: var(--text-muted);
+}
+
+.plan__cta.is-soon {
+  opacity: 0.55;
+}
+
