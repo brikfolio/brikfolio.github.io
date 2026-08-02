@@ -767,21 +767,27 @@ input::placeholder {
   color: var(--text-on-navy);
 }
 
-/* Elite's placeholder price — smaller than a real figure */
-.plan__price--soon {
-  font-size: 24px;
-  color: var(--text-on-navy);
-}
-
 .plan__features {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
   font-size: 14px;
+  line-height: 1.45;
   color: var(--text-on-navy-strong);
   list-style: none;
-  margin: 0;
+  margin: 4px 0;
   padding: 0;
+}
+
+/* Muted lead-in line ("Everything in …, plus:") */
+.plan__features-lead {
+  opacity: 0.6;
+  margin-bottom: 3px;
+}
+
+/* Inline muted note, e.g. "(coming soon)" */
+.plan__note {
+  opacity: 0.55;
 }
 
 .plan__cta {
@@ -1082,24 +1088,5 @@ input::placeholder {
     animation: none !important;
     scroll-behavior: auto !important;
   }
-}
-
-/* ==========================================================================
-   TEMPORARY — "Coming soon" placeholders standing in for the waitlist CTAs.
-   The real "Join waitlist" buttons are commented out in index.html and will
-   be restored in a day or two. To revert: delete this block, uncomment the
-   buttons, and remove the <span class="... is-soon"> placeholders.
-   ========================================================================== */
-.is-soon {
-  pointer-events: none;
-}
-
-.btn--primary.is-soon,
-.btn--nav.is-soon {
-  background: var(--text-muted);
-}
-
-.plan__cta.is-soon {
-  opacity: 0.55;
 }
 
