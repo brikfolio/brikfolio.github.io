@@ -978,6 +978,7 @@ input::placeholder {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 16px;
   font-size: 13px;
   color: var(--text-subtle);
@@ -992,6 +993,125 @@ input::placeholder {
 .footer__wordmark {
   font-weight: 600;
   color: var(--navy);
+}
+
+.footer__company p + p {
+  margin-top: 2px;
+}
+
+.footer__company a,
+.footer__legal a {
+  color: var(--text-subtle);
+}
+
+.footer__company a:hover,
+.footer__legal a:hover {
+  color: var(--accent-deep);
+}
+
+.footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+}
+
+/* --- Legal page ---------------------------------------------------------- */
+.legal {
+  padding: var(--section-y) 0;
+}
+
+.legal__header {
+  max-width: 72ch;
+}
+
+.legal__header h1 {
+  font-size: 44px;
+}
+
+.legal__meta {
+  margin: 20px 0 0;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 20px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.legal__meta dt {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--text-subtle);
+}
+
+.legal__meta dd {
+  margin: 0;
+}
+
+.legal-toc {
+  margin-top: 40px;
+  max-width: 72ch;
+  padding: 20px 24px;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  background: var(--white);
+}
+
+.legal-toc ol {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 6px;
+  font-size: 15px;
+}
+
+/* The nav is sticky (about 66px tall); the offset keeps an anchored heading visible. */
+.legal-doc {
+  max-width: 72ch;
+  margin-top: 64px;
+  padding-top: 40px;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 88px;
+}
+
+.legal-doc h2 {
+  font-size: 30px;
+}
+
+.legal-doc h3 {
+  margin: 32px 0 0;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--navy);
+  scroll-margin-top: 88px;
+}
+
+.legal-doc p {
+  margin-top: 12px;
+  font-size: 15.5px;
+  line-height: 1.7;
+}
+
+.legal-doc a,
+.legal__meta a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .legal__header h1 {
+    font-size: 34px;
+  }
+
+  .legal__meta {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .legal__meta dd + dt {
+    margin-top: 10px;
+  }
 }
 
 /* --- Section headings ---------------------------------------------------- */

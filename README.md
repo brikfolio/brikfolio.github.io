@@ -5,7 +5,8 @@ Static marketing site for Brikfolio. No build step, no framework, no runtime dep
 ## Structure
 
 ```
-index.html            # All page markup
+index.html            # Home page markup
+legal/index.html      # Legal page: Terms, Privacy, Cookies, Website Terms, Retention, Acceptable Use, Security
 assets/css/styles.css # All styles (tokens -> base -> components -> sections -> responsive)
 assets/favicon.svg
 .nojekyll             # Tells GitHub Pages to serve files as-is
