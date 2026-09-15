@@ -978,6 +978,7 @@ input::placeholder {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 16px;
   font-size: 13px;
   color: var(--text-subtle);
@@ -992,6 +993,26 @@ input::placeholder {
 .footer__wordmark {
   font-weight: 600;
   color: var(--navy);
+}
+
+.footer__company p + p {
+  margin-top: 2px;
+}
+
+.footer__company a,
+.footer__legal a {
+  color: var(--text-subtle);
+}
+
+.footer__company a:hover,
+.footer__legal a:hover {
+  color: var(--accent-deep);
+}
+
+.footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
 }
 
 /* --- Section headings ---------------------------------------------------- */
