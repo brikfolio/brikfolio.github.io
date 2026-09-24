@@ -8,7 +8,9 @@ Static marketing site for Brikfolio. No build step, no framework, no runtime dep
 index.html            # Home page markup
 legal/index.html      # Legal page: Terms, Privacy, Cookies, Website Terms, Retention, Acceptable Use, Security
 assets/css/styles.css # All styles (tokens -> base -> components -> sections -> responsive)
-assets/favicon.svg
+assets/favicon.svg    # Browser-tab icon: the BF mark on a white tile
+assets/logo.svg       # Full logo: BF mark + "Brikfolio" wordmark (text outlined, no font needed)
+assets/logo-mark.svg  # BF mark on its own
 robots.txt            # Crawler rules (all allowed) + sitemap pointer
 sitemap.xml           # Page list for search engines. Bump <lastmod> when a page changes
 llms.txt              # Plain summary of the product for AI assistants (llmstxt.org). Keep pricing in sync
@@ -32,6 +34,11 @@ Push this directory to a repo, then in **Settings -> Pages** set the source to
 
 For a custom domain, add a `CNAME` file containing the domain and point the DNS at
 GitHub Pages.
+
+## Brand
+
+- Logo colours: navy `#102751`, green `#23b591` (`--brand-navy`, `--brand-green`).
+- Wordmark font: **Albert Sans 600**, letter-spacing `-0.035em` (`--font-brand`). Loaded from Google Fonts.
 
 ## Notes
 

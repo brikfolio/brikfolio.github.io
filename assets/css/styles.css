@@ -35,6 +35,11 @@
   --accent-line: oklch(0.85 0.06 165);
   --accent-hover: oklch(0.72 0.1 165);
 
+  /* Brand: exact logo colours and the wordmark face (Albert Sans 600, tight tracking) */
+  --brand-navy: #102751;
+  --brand-green: #23b591;
+  --font-brand: 'Albert Sans', 'Space Grotesk', system-ui, sans-serif;
+
   /* Type */
   --font-sans: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
@@ -149,66 +154,23 @@ input::placeholder {
 
 /* --- Components ---------------------------------------------------------- */
 
-/* Logo mark: 2x2 grid of squares, the last offset and accented */
-.logo-mark {
-  display: grid;
+/* Brand mark: the "BF" logo mark (assets/logo-mark.svg), 332 x 355 */
+.brand-mark {
+  display: block;
   flex: none;
+  width: auto;
 }
 
-.logo-mark span {
-  background: var(--navy);
+.brand-mark--sm {
+  height: 20px;
 }
 
-.logo-mark span:last-child {
-  background: var(--accent);
+.brand-mark--md {
+  height: 30px;
 }
 
-.logo-mark--sm {
-  grid-template-columns: 8px 8px;
-  gap: 2.5px;
-}
-
-.logo-mark--sm span {
-  width: 8px;
-  height: 8px;
-  border-radius: 2px;
-}
-
-.logo-mark--sm span:last-child {
-  border-radius: 4px;
-  transform: translate(2.5px, 2.5px);
-}
-
-.logo-mark--md {
-  grid-template-columns: 11px 11px;
-  gap: 3px;
-}
-
-.logo-mark--md span {
-  width: 11px;
-  height: 11px;
-  border-radius: 3px;
-}
-
-.logo-mark--md span:last-child {
-  border-radius: 6px;
-  transform: translate(4px, 4px);
-}
-
-.logo-mark--lg {
-  grid-template-columns: 22px 22px;
-  gap: 6px;
-}
-
-.logo-mark--lg span {
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
-}
-
-.logo-mark--lg span:last-child {
-  border-radius: 12px;
-  transform: translate(8px, 8px);
+.brand-mark--lg {
+  height: 60px;
 }
 
 /* Buttons */
@@ -309,10 +271,11 @@ input::placeholder {
 }
 
 .nav__wordmark {
-  font-size: 19px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--navy);
+  font-family: var(--font-brand);
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  color: var(--brand-navy);
 }
 
 .nav__links {
@@ -703,8 +666,30 @@ input::placeholder {
   box-shadow: 0 8px 24px -12px rgba(29, 42, 77, 0.18);
 }
 
-.feature .logo-mark {
+/* Feature icons: square, flat strokes in brand navy with one green part, like the BF mark */
+.feature__icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
   margin-bottom: 16px;
+  border-radius: 4px;
+  background: color-mix(in oklab, var(--brand-green) 12%, transparent);
+  color: var(--brand-navy);
+}
+
+.feature__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.feature__icon .fi-fill {
+  fill: var(--brand-green);
+  stroke: none;
+}
+
+.feature__icon .fi-line {
+  stroke: var(--brand-green);
 }
 
 .feature__title {
@@ -991,8 +976,11 @@ input::placeholder {
 }
 
 .footer__wordmark {
+  font-family: var(--font-brand);
+  font-size: 16px;
   font-weight: 600;
-  color: var(--navy);
+  letter-spacing: -0.035em;
+  color: var(--brand-navy);
 }
 
 .footer__company p + p {
