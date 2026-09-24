@@ -1,0 +1,6 @@
+# Brikfolio marketing site — https://brikfolio.com.au
+# Search engines and AI assistants are welcome to read every public page.
+User-agent: *
+Allow: /
+
+Sitemap: https://brikfolio.com.au/sitemap.xml

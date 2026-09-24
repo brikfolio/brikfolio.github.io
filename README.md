@@ -9,6 +9,9 @@ index.html            # Home page markup
 legal/index.html      # Legal page: Terms, Privacy, Cookies, Website Terms, Retention, Acceptable Use, Security
 assets/css/styles.css # All styles (tokens -> base -> components -> sections -> responsive)
 assets/favicon.svg
+robots.txt            # Crawler rules (all allowed) + sitemap pointer
+sitemap.xml           # Page list for search engines. Bump <lastmod> when a page changes
+llms.txt              # Plain summary of the product for AI assistants (llmstxt.org). Keep pricing in sync
 .nojekyll             # Tells GitHub Pages to serve files as-is
 ```
 

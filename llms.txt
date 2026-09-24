@@ -1,0 +1,40 @@
+# Brikfolio
+
+> Brikfolio is an AI-powered property intelligence platform for Australian property investors. It turns fragmented property data (portfolio, debt, tax and documents) into proactive decisions: when to refinance, what a rate change does to cash flow, and how to time CGT events. Brikfolio is in pre-launch; early access opens in 2026 through a waitlist.
+
+Brikfolio is a trading name of AirAi Pty Ltd (ABN 37 680 869 845), governed by the laws of Victoria, Australia. All prices are in Australian dollars (AUD).
+
+## Product
+
+- Unified portfolio view: one dashboard across all properties, banks, mortgages and property managers, showing value, equity, yield, LVR and cash flow.
+- Refinance intelligence: live rate monitoring against bank feeds, with refinance scoring that surfaces savings windows before they close.
+- Tax and depreciation: automated depreciation tracking aligned to ATO requirements, real-time CGT per property and end-of-financial-year strategy recommendations.
+- Scenario modelling: what-if simulations for rate moves, rent changes, acquisitions and disposals at portfolio level.
+- AI decision support: personalised Buy / Hold / Sell / Refinance prompts, updated daily from the portfolio, market signals and the investor's goals.
+- Document vault: contracts, schedules, permits and leases in one place, with AI extraction of key dates and obligations.
+
+## Pricing
+
+- Free — $0/month: up to 2 properties, basic portfolio dashboard, manual data entry.
+- Pro — $30/month billed yearly, or $50/month billed monthly: unlimited properties, auto-create from documents, statement import, full cash-flow dashboard, scenario modelling, document vault, shared access for advisors, accountants and agents.
+- Elite — $60/month billed yearly, or $100/month billed monthly: everything in Pro, plus advanced multi-property scenario modelling, AI insights on the portfolio and target suburbs, property management app sync, full property lifecycle tracking and a virtual property agent (coming soon).
+
+## Links
+
+- [Home page](https://brikfolio.com.au/): product overview, features and pricing
+- [Join the waitlist](https://brikfolio.app/joinwishlist): sign up for early access
+- [Login](https://brikfolio.app/login): sign in to the Brikfolio app
+
+## Legal
+
+- [Terms of Use](https://brikfolio.com.au/legal/#terms)
+- [Privacy Policy](https://brikfolio.com.au/legal/#privacy)
+- [Cookie Policy](https://brikfolio.com.au/legal/#cookies)
+- [Security Policy Summary](https://brikfolio.com.au/legal/#security)
+
+## Optional
+
+- [Website Terms and Conditions](https://brikfolio.com.au/legal/#website-terms)
+- [Data Retention and Deletion Policy](https://brikfolio.com.au/legal/#data-retention)
+- [Acceptable Use Policy](https://brikfolio.com.au/legal/#acceptable-use)
+- Support: support@brikfolio.com.au
