@@ -154,68 +154,6 @@ input::placeholder {
 
 /* --- Components ---------------------------------------------------------- */
 
-/* Logo mark: 2x2 grid of squares, the last offset and accented */
-.logo-mark {
-  display: grid;
-  flex: none;
-}
-
-.logo-mark span {
-  background: var(--navy);
-}
-
-.logo-mark span:last-child {
-  background: var(--accent);
-}
-
-.logo-mark--sm {
-  grid-template-columns: 8px 8px;
-  gap: 2.5px;
-}
-
-.logo-mark--sm span {
-  width: 8px;
-  height: 8px;
-  border-radius: 2px;
-}
-
-.logo-mark--sm span:last-child {
-  border-radius: 4px;
-  transform: translate(2.5px, 2.5px);
-}
-
-.logo-mark--md {
-  grid-template-columns: 11px 11px;
-  gap: 3px;
-}
-
-.logo-mark--md span {
-  width: 11px;
-  height: 11px;
-  border-radius: 3px;
-}
-
-.logo-mark--md span:last-child {
-  border-radius: 6px;
-  transform: translate(4px, 4px);
-}
-
-.logo-mark--lg {
-  grid-template-columns: 22px 22px;
-  gap: 6px;
-}
-
-.logo-mark--lg span {
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
-}
-
-.logo-mark--lg span:last-child {
-  border-radius: 12px;
-  transform: translate(8px, 8px);
-}
-
 /* Brand mark: the "BF" logo mark (assets/logo-mark.svg), 332 x 355 */
 .brand-mark {
   display: block;
@@ -728,8 +666,30 @@ input::placeholder {
   box-shadow: 0 8px 24px -12px rgba(29, 42, 77, 0.18);
 }
 
-.feature .logo-mark {
+/* Feature icons: square, flat strokes in brand navy with one green part, like the BF mark */
+.feature__icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
   margin-bottom: 16px;
+  border-radius: 4px;
+  background: color-mix(in oklab, var(--brand-green) 12%, transparent);
+  color: var(--brand-navy);
+}
+
+.feature__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.feature__icon .fi-fill {
+  fill: var(--brand-green);
+  stroke: none;
+}
+
+.feature__icon .fi-line {
+  stroke: var(--brand-green);
 }
 
 .feature__title {
