@@ -1,9 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -30 412 415">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 332 355" role="img" aria-label="Brikfolio">
   <defs><mask id="bf-b" maskUnits="userSpaceOnUse" x="0" y="0" width="332" height="355">
     <rect width="332" height="355" fill="#fff"/>
     <path d="M-10 73H71A55 55 0 0 1 71 183H49M49 183H83A55 55 0 0 1 83 293" fill="none" stroke="#000" stroke-width="46"/>
   </mask></defs>
-  <rect x="-40" y="-30" width="412" height="415" rx="72" fill="#fff"/>
   <path d="M0 0H332V144H188V355H0Z" fill="#102751" mask="url(#bf-b)"/>
   <path d="M232 188H332V355H232V270H285V230H232Z" fill="#23b591"/>
 </svg>
