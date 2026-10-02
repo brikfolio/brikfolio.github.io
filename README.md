@@ -8,6 +8,7 @@ Static marketing site for Brikfolio. No build step, no framework, no runtime dep
 index.html            # Home page markup
 legal/index.html      # Legal page: Terms, Privacy, Cookies, Website Terms, Retention, Acceptable Use, Security
 assets/css/styles.css # All styles (tokens -> base -> components -> sections -> responsive)
+assets/fonts/         # Self-hosted woff2 fonts (see Brand)
 assets/favicon.svg    # Browser-tab icon: the BF mark on a white tile
 assets/logo.svg       # Full logo: BF mark + "Brikfolio" wordmark (text outlined, no font needed)
 assets/logo-mark.svg  # BF mark on its own
@@ -42,7 +43,10 @@ GitHub Pages.
 ## Brand
 
 - Logo colours: navy `#102751`, green `#23b591` (`--brand-navy`, `--brand-green`).
-- Wordmark font: **Albert Sans 600**, letter-spacing `-0.035em` (`--font-brand`). Loaded from Google Fonts.
+- Wordmark font: **Albert Sans 600**, letter-spacing `-0.035em` (`--font-brand`).
+- Fonts are self-hosted in `assets/fonts/` (Latin-only woff2 from Google Fonts, SIL Open Font
+  License) and declared with `@font-face` at the top of `styles.css`. Space Grotesk is one
+  variable file covering weights 300–700.
 
 ## SEO and tracking
 
@@ -52,6 +56,8 @@ GitHub Pages.
   pricing cards and `llms.txt` together. Offers carry `priceValidUntil` — bump it before it passes.
 - The FAQ answers appear twice: the visible `#faq` section and the FAQPage JSON-LD.
   Google requires them to match.
+- GA4 and Meta Pixel queue their calls at once but fetch their scripts only after the page
+  `load` event, so they never slow first paint. Visitors who leave within ~2 s may not be counted.
 - Every waitlist link has a `data-cta` attribute. A click sends GA4 `generate_lead` and
   Meta `Lead`, tagged with that value (`nav`, `hero`, `pricing_pro`, …). New waitlist
   links need a `data-cta` too.

@@ -206,16 +206,8 @@
   </script>
 
   <!-- Fonts load without blocking first paint; display=swap shows fallback text until they arrive -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
-  <link rel="stylesheet" media="print" onload="this.media='all'"
-    href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
-  <noscript>
-    <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
-  </noscript>
+  <!-- Self-hosted fonts (see @font-face in styles.css); preload the body face used by the hero text -->
+  <link rel="preload" href="assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="dns-prefetch" href="https://brikfolio.app">
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -224,36 +216,42 @@
   <link rel="manifest" href="site.webmanifest">
   <link rel="stylesheet" href="assets/css/styles.css">
 
-  <!-- Meta Pixel Code -->
-  <script>
-    !function (f, b, e, v, n, t, s) {
-      if (f.fbq) return; n = f.fbq = function () {
-        n.callMethod ?
-          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-      };
-      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-      n.queue = []; t = b.createElement(e); t.async = !0;
-      t.src = v; s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s)
-    }(window, document, 'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1408786464565174');
-    fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=1408786464565174&ev=PageView&noscript=1" /></noscript>
-  <!-- End Meta Pixel Code -->
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XM6E0B61GG"></script>
+  <!-- Analytics: GA4 + Meta Pixel. The queues below record calls straight away; the two
+       vendor scripts are only fetched once the page has loaded, so they never delay first paint. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'G-XM6E0B61GG');
+
+    !function (f) {
+      if (f.fbq) return; var n = f.fbq = function () {
+        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = [];
+    }(window);
+    fbq('init', '1408786464565174');
+    fbq('track', 'PageView');
+
+    (function () {
+      function inject(src) {
+        var s = document.createElement('script'); s.async = true; s.src = src;
+        document.head.appendChild(s);
+      }
+      function loadVendors() {
+        inject('https://www.googletagmanager.com/gtag/js?id=G-XM6E0B61GG');
+        inject('https://connect.facebook.net/en_US/fbevents.js');
+      }
+      function onLoad() {
+        if ('requestIdleCallback' in window) requestIdleCallback(loadVendors, { timeout: 2000 });
+        else setTimeout(loadVendors, 1);
+      }
+      if (document.readyState === 'complete') onLoad();
+      else window.addEventListener('load', onLoad);
+    })();
   </script>
-  <!-- End Google tag (gtag.js) -->
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1408786464565174&ev=PageView&noscript=1" alt=""></noscript>
 </head>
 
 <body>
