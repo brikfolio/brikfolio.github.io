@@ -952,6 +952,66 @@ input::placeholder {
   margin-top: 30px;
 }
 
+/* --- FAQ ----------------------------------------------------------------- */
+.faq {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq__list {
+  margin-top: 44px;
+  max-width: 820px;
+  border-top: 1px solid var(--line);
+}
+
+.faq__item {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq__item summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 22px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--navy);
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq__item summary::after {
+  content: '+';
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--accent-text);
+  transition: transform 0.15s ease;
+}
+
+.faq__item[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.faq__item p {
+  padding: 0 0 22px;
+  max-width: 680px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+.faq__item p a {
+  color: var(--accent-text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 /* --- Footer -------------------------------------------------------------- */
 .footer {
   border-top: 1px solid var(--line);

@@ -10,6 +10,7 @@
     content="Brikfolio turns fragmented property data — portfolio, debt, tax, documents — into proactive, AI-driven decisions for Australian property investors.">
 
   <link rel="canonical" href="https://brikfolio.com.au/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Brikfolio">
@@ -18,10 +19,17 @@
   <meta property="og:title" content="Brikfolio — The AI operating system for property investors">
   <meta property="og:description"
     content="Stop reconciling spreadsheets. Start acting on time. AI-powered property intelligence for Australian investors.">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://brikfolio.com.au/assets/og-image.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Brikfolio — The AI operating system for property investors">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Brikfolio — The AI operating system for property investors">
   <meta name="twitter:description"
     content="Stop reconciling spreadsheets. Start acting on time. AI-powered property intelligence for Australian investors.">
+  <meta name="twitter:image" content="https://brikfolio.com.au/assets/og-image.png">
+  <meta name="twitter:image:alt" content="Brikfolio — The AI operating system for property investors">
   <meta name="theme-color" content="#1d2a4d">
 
   <script type="application/ld+json">
@@ -34,9 +42,26 @@
         "name": "Brikfolio",
         "legalName": "AirAi Pty Ltd",
         "url": "https://brikfolio.com.au/",
-        "logo": "https://brikfolio.com.au/assets/logo-mark.svg",
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "https://brikfolio.com.au/#logo",
+          "url": "https://brikfolio.com.au/assets/logo-512.png",
+          "width": 512,
+          "height": 512,
+          "caption": "Brikfolio"
+        },
+        "image": { "@id": "https://brikfolio.com.au/#logo" },
+        "description": "Brikfolio is an AI-powered property intelligence platform for Australian property investors.",
         "email": "support@brikfolio.com.au",
-        "areaServed": "AU",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "email": "support@brikfolio.com.au",
+          "areaServed": "AU",
+          "availableLanguage": "en"
+        },
+        "areaServed": { "@type": "Country", "name": "Australia" },
+        "address": { "@type": "PostalAddress", "addressRegion": "VIC", "addressCountry": "AU" },
         "identifier": { "@type": "PropertyValue", "propertyID": "ABN", "value": "37 680 869 845" }
       },
       {
@@ -48,31 +73,155 @@
         "publisher": { "@id": "https://brikfolio.com.au/#organization" }
       },
       {
-        "@type": "SoftwareApplication",
-        "name": "Brikfolio",
-        "applicationCategory": "FinanceApplication",
-        "operatingSystem": "Web",
-        "description": "AI-powered property intelligence for Australian property investors: portfolio view, refinance alerts, tax and depreciation tracking, scenario modelling and Buy / Hold / Sell / Refinance decision support.",
+        "@type": "WebPage",
+        "@id": "https://brikfolio.com.au/#webpage",
         "url": "https://brikfolio.com.au/",
+        "name": "Brikfolio — The AI operating system for property investors",
+        "description": "Brikfolio turns fragmented property data — portfolio, debt, tax, documents — into proactive, AI-driven decisions for Australian property investors.",
+        "inLanguage": "en-AU",
+        "isPartOf": { "@id": "https://brikfolio.com.au/#website" },
+        "about": { "@id": "https://brikfolio.com.au/#software" },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://brikfolio.com.au/assets/og-image.png",
+          "width": 1200,
+          "height": 630
+        },
+        "dateModified": "2026-10-02"
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://brikfolio.com.au/#software",
+        "name": "Brikfolio",
+        "url": "https://brikfolio.com.au/",
+        "mainEntityOfPage": { "@id": "https://brikfolio.com.au/#webpage" },
+        "image": "https://brikfolio.com.au/assets/og-image.png",
+        "description": "AI-powered property intelligence for Australian property investors: one portfolio view across properties, loans and property managers, refinance alerts, tax and depreciation tracking, scenario modelling and Buy / Hold / Sell / Refinance decision support.",
+        "applicationCategory": "FinanceApplication",
+        "applicationSubCategory": "Property investment portfolio management",
+        "operatingSystem": "Any (web browser)",
+        "browserRequirements": "Requires a modern web browser with JavaScript enabled.",
+        "inLanguage": "en-AU",
+        "countriesSupported": "AU",
+        "isAccessibleForFree": true,
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Australian residential property investors",
+          "geographicArea": { "@type": "Country", "name": "Australia" }
+        },
+        "featureList": [
+          "Portfolio aggregation and analytics: value, equity, yield, LVR and cash flow across all properties",
+          "Debt and refinance intelligence with refinance scoring",
+          "Tax and CGT optimisation with depreciation tracking aligned to ATO requirements",
+          "Scenario modelling for rate moves, rent changes, acquisitions and disposals",
+          "AI decision feed with Buy / Hold / Sell / Refinance prompts",
+          "Document and compliance vault with AI extraction of key dates",
+          "Shared access for advisors, accountants and agents"
+        ],
         "publisher": { "@id": "https://brikfolio.com.au/#organization" },
+        "provider": { "@id": "https://brikfolio.com.au/#organization" },
         "offers": [
-          { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "AUD" },
-          { "@type": "Offer", "name": "Pro", "price": "50", "priceCurrency": "AUD",
-            "priceSpecification": { "@type": "UnitPriceSpecification", "price": "50", "priceCurrency": "AUD", "unitCode": "MON" } },
-          { "@type": "Offer", "name": "Elite", "price": "100", "priceCurrency": "AUD",
-            "priceSpecification": { "@type": "UnitPriceSpecification", "price": "100", "priceCurrency": "AUD", "unitCode": "MON" } }
+          {
+            "@type": "Offer",
+            "name": "Free",
+            "description": "Up to 2 properties, basic portfolio dashboard, manual data entry.",
+            "price": "0",
+            "priceCurrency": "AUD",
+            "availability": "https://schema.org/PreOrder",
+            "url": "https://brikfolio.app/joinwishlist",
+            "eligibleRegion": { "@type": "Country", "name": "Australia" },
+            "seller": { "@id": "https://brikfolio.com.au/#organization" }
+          },
+          {
+            "@type": "Offer",
+            "name": "Pro — billed monthly",
+            "description": "Unlimited properties, document auto-create, statement import, cash-flow dashboard, scenario modelling, document vault and shared access.",
+            "price": "50",
+            "priceCurrency": "AUD",
+            "priceValidUntil": "2027-09-30",
+            "priceSpecification": { "@type": "UnitPriceSpecification", "price": "50", "priceCurrency": "AUD", "unitCode": "MON", "referenceQuantity": { "@type": "QuantitativeValue", "value": 1, "unitCode": "MON" } },
+            "availability": "https://schema.org/PreOrder",
+            "url": "https://brikfolio.app/joinwishlist",
+            "eligibleRegion": { "@type": "Country", "name": "Australia" },
+            "seller": { "@id": "https://brikfolio.com.au/#organization" }
+          },
+          {
+            "@type": "Offer",
+            "name": "Pro — billed yearly",
+            "description": "Pro plan billed yearly: $30 per month, $360 per year.",
+            "price": "360",
+            "priceCurrency": "AUD",
+            "priceValidUntil": "2027-09-30",
+            "priceSpecification": { "@type": "UnitPriceSpecification", "price": "360", "priceCurrency": "AUD", "unitCode": "ANN", "referenceQuantity": { "@type": "QuantitativeValue", "value": 1, "unitCode": "ANN" } },
+            "availability": "https://schema.org/PreOrder",
+            "url": "https://brikfolio.app/joinwishlist",
+            "eligibleRegion": { "@type": "Country", "name": "Australia" },
+            "seller": { "@id": "https://brikfolio.com.au/#organization" }
+          },
+          {
+            "@type": "Offer",
+            "name": "Elite — billed monthly",
+            "description": "Everything in Pro, plus advanced multi-property scenario modelling, AI insights on your portfolio and target suburbs, property management app sync and full lifecycle tracking.",
+            "price": "100",
+            "priceCurrency": "AUD",
+            "priceValidUntil": "2027-09-30",
+            "priceSpecification": { "@type": "UnitPriceSpecification", "price": "100", "priceCurrency": "AUD", "unitCode": "MON", "referenceQuantity": { "@type": "QuantitativeValue", "value": 1, "unitCode": "MON" } },
+            "availability": "https://schema.org/PreOrder",
+            "url": "https://brikfolio.app/joinwishlist",
+            "eligibleRegion": { "@type": "Country", "name": "Australia" },
+            "seller": { "@id": "https://brikfolio.com.au/#organization" }
+          },
+          {
+            "@type": "Offer",
+            "name": "Elite — billed yearly",
+            "description": "Elite plan billed yearly: $60 per month, $720 per year.",
+            "price": "720",
+            "priceCurrency": "AUD",
+            "priceValidUntil": "2027-09-30",
+            "priceSpecification": { "@type": "UnitPriceSpecification", "price": "720", "priceCurrency": "AUD", "unitCode": "ANN", "referenceQuantity": { "@type": "QuantitativeValue", "value": 1, "unitCode": "ANN" } },
+            "availability": "https://schema.org/PreOrder",
+            "url": "https://brikfolio.app/joinwishlist",
+            "eligibleRegion": { "@type": "Country", "name": "Australia" },
+            "seller": { "@id": "https://brikfolio.com.au/#organization" }
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://brikfolio.com.au/#faq",
+        "isPartOf": { "@id": "https://brikfolio.com.au/#webpage" },
+        "mainEntity": [
+          { "@type": "Question", "name": "What is Brikfolio?", "acceptedAnswer": { "@type": "Answer", "text": "Brikfolio is an AI-powered property intelligence platform for Australian property investors. It brings your portfolio, debt, tax and documents into one view, then flags the moments to act — such as a refinance window, a lease expiry or an end-of-financial-year CGT decision." } },
+          { "@type": "Question", "name": "Who is Brikfolio for?", "acceptedAnswer": { "@type": "Answer", "text": "Brikfolio is built for Australian residential property investors — from investors with one or two properties to those managing a multi-property portfolio across several banks and property managers." } },
+          { "@type": "Question", "name": "How much does Brikfolio cost?", "acceptedAnswer": { "@type": "Answer", "text": "There is a Free plan for up to 2 properties. Pro is $30 per month billed yearly or $50 billed monthly. Elite is $60 per month billed yearly or $100 billed monthly. All prices are in Australian dollars." } },
+          { "@type": "Question", "name": "When can I start using Brikfolio?", "acceptedAnswer": { "@type": "Answer", "text": "Brikfolio is in pre-launch. Join the waitlist at brikfolio.app/joinwishlist and you will be among the first invited when early access opens." } },
+          { "@type": "Question", "name": "Can I share my portfolio with my accountant or advisor?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Pro and Elite plans let you share access with your advisors, accountants and agents." } },
+          { "@type": "Question", "name": "How is my data protected?", "acceptedAnswer": { "@type": "Answer", "text": "Brikfolio uses safeguards including encrypted transmission, access controls, role-based permissions, audit logs, backups and security monitoring. See the Security Policy Summary at brikfolio.com.au/legal/#security." } },
+          { "@type": "Question", "name": "Is Brikfolio financial advice?", "acceptedAnswer": { "@type": "Answer", "text": "No. Brikfolio provides software tools only. It does not provide financial, investment, tax, lending or legal advice. Speak to a licensed professional before you act on any decision." } },
+          { "@type": "Question", "name": "Can I cancel at any time?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can cancel in your account settings or by emailing support@brikfolio.com.au. Cancellation takes effect at the end of your current billing period." } }
         ]
       }
     ]
   }
   </script>
 
+  <!-- Fonts load without blocking first paint; display=swap shows fallback text until they arrive -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
-    rel="stylesheet">
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" media="print" onload="this.media='all'"
+    href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  </noscript>
+  <link rel="dns-prefetch" href="https://brikfolio.app">
+
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180">
+  <link rel="manifest" href="site.webmanifest">
   <link rel="stylesheet" href="assets/css/styles.css">
 
   <!-- Meta Pixel Code -->
@@ -122,7 +271,7 @@
         <a href="#features">Features</a>
         <a href="#pricing">Pricing</a>
         <a class="nav__login" href="https://brikfolio.app/login">Login</a>
-        <a class="btn btn--nav" href="https://brikfolio.app/joinwishlist">Join waitlist</a>
+        <a class="btn btn--nav" href="https://brikfolio.app/joinwishlist" data-cta="nav">Join waitlist</a>
       </nav>
     </div>
   </header>
@@ -137,7 +286,7 @@
         <p class="hero__sub">Brikfolio turns fragmented property data — portfolio, debt, tax, documents — into
           proactive, AI-driven decisions. Stop reconciling spreadsheets. Start acting on time.</p>
         <div class="hero__cta" id="waitlist">
-          <a class="btn btn--primary" href="https://brikfolio.app/joinwishlist">Join waitlist</a>
+          <a class="btn btn--primary" href="https://brikfolio.app/joinwishlist" data-cta="hero">Join waitlist</a>
         </div>
         <p class="hero__note">Early access opens 2026 · No spam, ever</p>
 
@@ -300,25 +449,25 @@
         </div>
         <div class="grid grid-4 steps">
           <div class="step">
-            <div class="step__num">01</div>
+            <div class="step__num" aria-hidden="true">01</div>
             <div class="step__title">Aggregate</div>
             <p>Connect property, debt, income, expenses and documents into one unified portfolio view — replacing
               spreadsheets and email.</p>
           </div>
           <div class="step">
-            <div class="step__num">02</div>
+            <div class="step__num" aria-hidden="true">02</div>
             <div class="step__title">Model</div>
             <p>Simulate cash flow, tax, refinance and growth scenarios before acting — what-ifs across RBA rate changes
               and CGT events.</p>
           </div>
           <div class="step">
-            <div class="step__num">03</div>
+            <div class="step__num" aria-hidden="true">03</div>
             <div class="step__title">Alert</div>
             <p>Trigger-based reminders for refinancing, lease renewals, compliance and CGT events — the right action at
               the right moment.</p>
           </div>
           <div class="step">
-            <div class="step__num step__num--accent">04</div>
+            <div class="step__num step__num--accent" aria-hidden="true">04</div>
             <div class="step__title">Recommend</div>
             <p>AI-supported Buy / Hold / Sell / Refinance decision support tailored to your goals and risk profile.</p>
           </div>
@@ -418,7 +567,7 @@
         <!-- Billing toggle: radios drive the price swap via CSS, no JS -->
         <input type="radio" name="billing" id="bill-yearly" class="billing__input" checked>
         <input type="radio" name="billing" id="bill-monthly" class="billing__input">
-        <div class="billing" role="radiogroup" aria-label="Billing period">
+        <div class="billing" role="radiogroup" aria-label="Billing period" aria-owns="bill-yearly bill-monthly">
           <label class="billing__opt billing__opt--yearly" for="bill-yearly">
             Yearly <span class="billing__save">SAVE 40%</span>
           </label>
@@ -436,7 +585,7 @@
               <li>Basic portfolio dashboard</li>
               <li>Manual data entry</li>
             </ul>
-            <a class="plan__cta" href="https://brikfolio.app/joinwishlist">Join waitlist — Free</a>
+            <a class="plan__cta" href="https://brikfolio.app/joinwishlist" data-cta="pricing_free">Join waitlist — Free</a>
           </div>
 
           <div class="plan plan--featured">
@@ -462,7 +611,7 @@
               <li>Property vault for documents</li>
               <li>Share access with advisors, accountants &amp; agents</li>
             </ul>
-            <a class="plan__cta" href="https://brikfolio.app/joinwishlist">Join waitlist — Pro</a>
+            <a class="plan__cta" href="https://brikfolio.app/joinwishlist" data-cta="pricing_pro">Join waitlist — Pro</a>
           </div>
 
           <div class="plan">
@@ -485,8 +634,52 @@
               <li>Full property lifecycle tracking</li>
               <li>Virtual property agent <span class="plan__note">(coming soon)</span></li>
             </ul>
-            <a class="plan__cta" href="https://brikfolio.app/joinwishlist">Join waitlist — Elite</a>
+            <a class="plan__cta" href="https://brikfolio.app/joinwishlist" data-cta="pricing_elite">Join waitlist — Elite</a>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ — keep in sync with the FAQPage JSON-LD in <head> -->
+    <section id="faq" class="faq section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">FAQ</p>
+          <h2>Questions investors ask us</h2>
+        </div>
+        <div class="faq__list">
+          <details class="faq__item">
+            <summary>What is Brikfolio?</summary>
+            <p>Brikfolio is an AI-powered property intelligence platform for Australian property investors. It brings your portfolio, debt, tax and documents into one view, then flags the moments to act — such as a refinance window, a lease expiry or an end-of-financial-year CGT decision.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Who is Brikfolio for?</summary>
+            <p>Brikfolio is built for Australian residential property investors — from investors with one or two properties to those managing a multi-property portfolio across several banks and property managers.</p>
+          </details>
+          <details class="faq__item">
+            <summary>How much does Brikfolio cost?</summary>
+            <p>There is a Free plan for up to 2 properties. Pro is $30 per month billed yearly or $50 billed monthly. Elite is $60 per month billed yearly or $100 billed monthly. All prices are in Australian dollars.</p>
+          </details>
+          <details class="faq__item">
+            <summary>When can I start using Brikfolio?</summary>
+            <p>Brikfolio is in pre-launch. <a href="https://brikfolio.app/joinwishlist" data-cta="faq">Join the waitlist</a> and you will be among the first invited when early access opens.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Can I share my portfolio with my accountant or advisor?</summary>
+            <p>Yes. The Pro and Elite plans let you share access with your advisors, accountants and agents.</p>
+          </details>
+          <details class="faq__item">
+            <summary>How is my data protected?</summary>
+            <p>Brikfolio uses safeguards including encrypted transmission, access controls, role-based permissions, audit logs, backups and security monitoring. Read the <a href="legal/#security">Security Policy Summary</a>.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Is Brikfolio financial advice?</summary>
+            <p>No. Brikfolio provides software tools only. It does not provide financial, investment, tax, lending or legal advice. Speak to a licensed professional before you act on any decision.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Can I cancel at any time?</summary>
+            <p>Yes. You can cancel in your account settings or by emailing <a href="mailto:support@brikfolio.com.au">support@brikfolio.com.au</a>. Cancellation takes effect at the end of your current billing period.</p>
+          </details>
         </div>
       </div>
     </section>
@@ -497,7 +690,7 @@
         <img class="brand-mark brand-mark--lg" src="assets/logo-mark.svg" alt="" width="332" height="355">
         <h2>Stop leaving $8K–22K a year on the table</h2>
         <p>Join the waitlist and be first in when early access opens.</p>
-        <a class="btn btn--primary" href="https://brikfolio.app/joinwishlist">Join waitlist</a>
+        <a class="btn btn--primary" href="https://brikfolio.app/joinwishlist" data-cta="final">Join waitlist</a>
       </div>
     </section>
 
@@ -525,6 +718,17 @@
       <div>Governing Law: Victoria, Australia</div>
     </div>
   </footer>
+
+  <!-- CTA tracking: one GA4 + Meta event per waitlist click, tagged with where it was clicked -->
+  <script>
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[data-cta]');
+      if (!a) return;
+      var where = a.getAttribute('data-cta');
+      if (window.gtag) gtag('event', 'generate_lead', { cta_location: where, transport_type: 'beacon' });
+      if (window.fbq) fbq('track', 'Lead', { content_name: 'waitlist', content_category: where });
+    });
+  </script>
 
 </body>
 

@@ -11,6 +11,10 @@ assets/css/styles.css # All styles (tokens -> base -> components -> sections -> 
 assets/favicon.svg    # Browser-tab icon: the BF mark on a white tile
 assets/logo.svg       # Full logo: BF mark + "Brikfolio" wordmark (text outlined, no font needed)
 assets/logo-mark.svg  # BF mark on its own
+assets/og-image.png   # 1200x630 social card (Open Graph + Twitter/X) for every page
+assets/logo-512.png   # Raster logo for the Organization JSON-LD (Google wants a bitmap)
+assets/favicon-32.png, apple-touch-icon.png, icon-*.png  # PNG icons for old browsers, iOS and the web manifest
+site.webmanifest      # Name, colours and icons for "Add to home screen"
 robots.txt            # Crawler rules (all allowed) + sitemap pointer
 sitemap.xml           # Page list for search engines. Bump <lastmod> when a page changes
 llms.txt              # Plain summary of the product for AI assistants (llmstxt.org). Keep pricing in sync
@@ -40,8 +44,20 @@ GitHub Pages.
 - Logo colours: navy `#102751`, green `#23b591` (`--brand-navy`, `--brand-green`).
 - Wordmark font: **Albert Sans 600**, letter-spacing `-0.035em` (`--font-brand`). Loaded from Google Fonts.
 
+## SEO and tracking
+
+- Structured data (JSON-LD) lives in the `<head>` of each page. The home page has
+  Organization, WebSite, WebPage, WebApplication (with one Offer per plan and billing
+  period) and FAQPage. When pricing changes, update the Offers, the FAQ answer, the
+  pricing cards and `llms.txt` together. Offers carry `priceValidUntil` — bump it before it passes.
+- The FAQ answers appear twice: the visible `#faq` section and the FAQPage JSON-LD.
+  Google requires them to match.
+- Every waitlist link has a `data-cta` attribute. A click sends GA4 `generate_lead` and
+  Meta `Lead`, tagged with that value (`nav`, `hero`, `pricing_pro`, …). New waitlist
+  links need a `data-cta` too.
+- Check after changes: https://search.google.com/test/rich-results and
+  https://developers.facebook.com/tools/debug/ (also forces Facebook/LinkedIn to refresh the card).
+
 ## Notes
 
 - The dashboard is a hand-built HTML/CSS mock with illustrative figures, not live data.
-- The "Join waitlist" buttons currently anchor to `#waitlist` (the hero). Point them at a
-  real form or mailing-list provider before launch.
