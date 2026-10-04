@@ -154,6 +154,10 @@ input::placeholder {
 }
 
 .section-head h2 {
+  margin: 0;
+}
+
+.section-head .eyebrow + h2 {
   margin-top: 14px;
 }
 
@@ -170,6 +174,11 @@ input::placeholder {
   font-size: 12px;
   letter-spacing: 0.14em;
   color: var(--accent-text);
+}
+
+/* Utility: keep a phrase (e.g. a price range) on one line */
+.nowrap {
+  white-space: nowrap;
 }
 
 .grid {
@@ -266,6 +275,42 @@ input::placeholder {
   margin-top: 8px;
 }
 
+/* Problem: the lead card spans both rows on the left */
+.problem-grid {
+  margin-top: 44px;
+  grid-template-columns: 1.25fr 1fr;
+}
+
+.card--lead {
+  grid-row: span 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 36px;
+  background: var(--navy);
+  border-color: var(--navy);
+}
+
+.card--lead .card__stat {
+  font-size: 64px;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--accent-bright);
+}
+
+.card--lead .card__title {
+  font-size: 18px;
+  margin-top: 0;
+  color: var(--paper);
+}
+
+.card--lead .card__body {
+  font-size: 15px;
+  max-width: 36ch;
+  color: var(--text-on-navy-strong);
+}
+
 /* Pills / badges */
 .pill {
   display: inline-block;
@@ -357,12 +402,6 @@ input::placeholder {
 
 .hero__cta {
   margin-top: 34px;
-}
-
-.hero__note {
-  font-size: 13px;
-  color: var(--text-subtle);
-  margin-top: 12px;
 }
 
 /* --- Dashboard mock ------------------------------------------------------ */
@@ -654,24 +693,12 @@ input::placeholder {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  padding-top: 18px;
+  border-top: 2px solid var(--navy);
 }
 
-.step__num {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--paper);
-  background: var(--navy);
-  width: 34px;
-  height: 34px;
-  border-radius: 9px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.step__num--accent {
-  color: var(--navy);
-  background: var(--accent-bright);
+.step--accent {
+  border-top-color: var(--accent);
 }
 
 .step__title {
@@ -697,6 +724,28 @@ input::placeholder {
 .feature:hover {
   border-color: var(--accent-hover);
   box-shadow: 0 8px 24px -12px rgba(29, 42, 77, 0.18);
+}
+
+.feature--tint {
+  background: var(--accent-tint);
+  border-color: var(--accent-line);
+}
+
+.feature--dark {
+  background: var(--navy);
+  border-color: var(--navy);
+}
+
+.feature--dark .feature__title {
+  color: var(--paper);
+}
+
+.feature--dark .feature__body {
+  color: var(--text-on-navy-strong);
+}
+
+.feature--dark .feature__icon {
+  color: var(--paper);
 }
 
 /* Feature icons: square, flat strokes in brand navy with one green part, like the BF mark */
@@ -1099,6 +1148,45 @@ input::placeholder {
   gap: 6px 14px;
 }
 
+/* --- Social rail ---------------------------------------------------------- */
+.social-rail {
+  position: fixed;
+  left: 20px;
+  bottom: 24px;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.social-rail a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--r-pill);
+  background: var(--white);
+  color: var(--brand-navy);
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.social-rail a:hover,
+.social-rail a:focus-visible {
+  color: var(--accent-deep);
+  border-color: var(--accent-line);
+}
+
+.social-rail__handle {
+  display: none;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--text-subtle);
+}
+
 /* --- Legal page ---------------------------------------------------------- */
 .legal {
   padding: var(--section-y) 0;
@@ -1247,8 +1335,17 @@ input::placeholder {
   .grid-3,
   .grid-4,
   .stats__inner,
-  .mock__kpis {
+  .mock__kpis,
+  .problem-grid {
     grid-template-columns: 1fr;
+  }
+
+  .card--lead {
+    grid-row: auto;
+  }
+
+  .card--lead .card__stat {
+    font-size: 48px;
   }
 
   .hero__inner {
@@ -1283,6 +1380,19 @@ input::placeholder {
   .footer__inner {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  /* No room for a fixed rail: sit as a row above the footer instead */
+  .social-rail {
+    position: static;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0 var(--gutter) 20px;
+  }
+
+  .social-rail__handle {
+    display: inline;
+    margin-left: 4px;
   }
 }
 
