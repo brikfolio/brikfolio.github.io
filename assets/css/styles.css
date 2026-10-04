@@ -387,6 +387,30 @@ input::placeholder {
   color: var(--navy);
 }
 
+/* Social icons in the sticky nav: always in view, on every screen size */
+.nav__social {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.nav__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-pill);
+  color: var(--navy);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.nav__social-link:hover,
+.nav__social-link:focus-visible {
+  background: var(--accent-tint);
+  color: var(--accent-deep);
+}
+
 /* --- Hero ---------------------------------------------------------------- */
 .hero {
   background: linear-gradient(180deg, var(--paper) 0%, var(--sand) 100%);
@@ -1179,31 +1203,61 @@ input::placeholder {
   gap: 10px;
 }
 
-.social-rail a {
+/* Social button: filled brand navy with an off-white ring, so it reads on light and navy sections */
+.social-rail a,
+.social-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  border: 1px solid var(--card-border);
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--paper);
   border-radius: var(--r-pill);
-  background: var(--white);
-  color: var(--brand-navy);
-  transition: color 0.15s, border-color 0.15s;
+  background: var(--navy);
+  color: var(--paper);
+  box-shadow: 0 6px 16px -6px rgba(29, 42, 77, 0.45);
+  transition: background-color 0.15s ease, transform 0.15s ease;
 }
 
 .social-rail a:hover,
-.social-rail a:focus-visible {
-  color: var(--accent-deep);
-  border-color: var(--accent-line);
+.social-rail a:focus-visible,
+.social-btn:hover,
+.social-btn:focus-visible {
+  background: var(--accent-deep);
+  color: var(--paper);
 }
 
-.social-rail__handle {
-  display: none;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: var(--text-subtle);
+.social-rail a:active,
+.social-btn:active {
+  transform: scale(0.96);
+}
+
+/* Follow row in the final CTA: the main way to reach the socials on phones */
+.follow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  width: 100%;
+  max-width: 360px;
+}
+
+.cta .follow__label {
+  margin: 0;
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+.follow__label strong {
+  color: var(--ink);
+}
+
+.follow__links {
+  display: flex;
+  gap: 12px;
 }
 
 /* --- Legal page ---------------------------------------------------------- */
@@ -1385,12 +1439,35 @@ input::placeholder {
   }
 
   /* Hide section anchors on small screens; Login + CTA stay reachable */
-  .nav__links a:not(.btn--nav):not(.nav__login) {
+  .nav__links a:not(.btn--nav):not(.nav__login):not(.nav__social-link) {
     display: none;
   }
 
+  /* Phone nav: logo, social icons, Login and the CTA must share one line */
   .nav__links {
-    gap: 16px;
+    gap: 10px;
+  }
+
+  .nav__brand {
+    gap: 8px;
+  }
+
+  .nav__wordmark {
+    font-size: 19px;
+  }
+
+  .nav__social {
+    gap: 0;
+  }
+
+  .nav__social-link {
+    width: 32px;
+    height: 32px;
+  }
+
+  .btn--nav {
+    padding: 8px 14px;
+    white-space: nowrap;
   }
 
   .bar-row__label {
@@ -1402,17 +1479,16 @@ input::placeholder {
     align-items: flex-start;
   }
 
-  /* No room for a fixed rail: sit as a row above the footer instead */
+  /* No room for a fixed rail on phones; the final CTA's follow row takes over */
   .social-rail {
-    position: static;
-    flex-direction: row;
-    justify-content: flex-start;
-    padding: 0 var(--gutter) 20px;
+    display: none;
   }
+}
 
-  .social-rail__handle {
-    display: inline;
-    margin-left: 4px;
+/* Very small phones: no room in the nav; the final CTA's follow row still has the socials */
+@media (max-width: 400px) {
+  .nav__social {
+    display: none;
   }
 }
 
