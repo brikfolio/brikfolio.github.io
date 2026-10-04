@@ -30,5 +30,14 @@ has deployed, then send the changed URLs (Claude SEO plugin):
   text is brand navy and must turn light.
 - **Sources for the stats** (2.1M+, $2.4T, 78%, 52%, $8K–22K, 3–8 hrs). The owner will provide
   them; add a source note when they arrive.
+- **AI search (GEO), from the 2026-10-04 audit.** A web search for "Brikfolio" finds nothing about
+  this product, only look-alikes: Brickfolio (a US real estate investor tool), Brik (French property
+  platform) and a LEGO "Brickfolio" tracker. Never add "Brickfolio" as an `alternateName`. To do:
+  - Founder block ("Who's behind Brikfolio": name, 1-2 line background, LinkedIn) plus `Person`
+    schema linked from `Organization.founder`; add `foundingDate`. Waiting on the owner's details.
+  - Third-party mentions: LinkedIn company page, Product Hunt at early access, GetApp listing,
+    PropBoss 2026 app guide, pitch to The Adviser, honest posts in r/AusPropertyChat. Add each real
+    profile to `Organization.sameAs` and `llms.txt` when it goes live.
+  - Later phase: one original tool or guide (e.g. refinance savings calculator).
 - **Hero dashboard mock** is built from HTML, not a screenshot. Replace it with a real product
   screenshot at launch.
