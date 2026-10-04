@@ -138,6 +138,24 @@ input::placeholder {
   border-radius: 4px;
 }
 
+/* Skip link: hidden until a keyboard user tabs to it */
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: var(--r-md);
+  background: var(--navy);
+  color: var(--paper);
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 12px;
+  color: var(--paper);
+}
+
 /* --- Layout -------------------------------------------------------------- */
 .container {
   max-width: var(--container);
@@ -1016,6 +1034,7 @@ input::placeholder {
   text-align: center;
 }
 
+.cta h1,
 .cta h2 {
   font-size: 38px;
   margin-top: 28px;
@@ -1308,6 +1327,7 @@ input::placeholder {
   }
 
   .section-head h2,
+  .cta h1,
   .cta h2 {
     font-size: 32px;
   }
