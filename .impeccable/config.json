@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "space grotesk",
+        "createdAt": "2026-11-09T07:22:28.071Z",
+        "reason": "Brand font: Brikfolio brain brand_kit sets font-sans to Space Grotesk for the product and website"
+      }
+    ]
+  }
+}

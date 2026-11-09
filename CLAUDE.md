@@ -1,6 +1,11 @@
 # Brikfolio website
 
-Static landing page (`index.html`, `legal/index.html`, `assets/css/styles.css`). No build step.
+Hand-written landing page in `public/` (`public/index.html`, `public/legal/index.html`,
+`public/assets/css/styles.css`) plus an Astro blog (`src/`). GitHub Actions builds and deploys
+(`.github/workflows/deploy.yml`). Astro 7 needs Node >= 22.23.4: run `nvm use` (Node 24) first.
+Non-developer writers edit posts in Pages CMS (`.pages.yml`). See README.md.
+
+DNS stays on Route 53. Do not suggest moving nameservers to Cloudflare.
 
 ## Rules
 
@@ -23,6 +28,8 @@ has deployed, then send the changed URLs (Claude SEO plugin):
 
 ## Deferred tasks
 
+- **Next phase:** a podcast page (audio on a podcast host, episodes shown on `/podcast/`).
+
 - **Dark mode** (deferred 2026-10-04, do after launch). Colors are tokens in `:root` in
   `assets/css/styles.css`, so most of the work is a dark set of tokens. The hard part is the
   navy blocks (stats bar, pricing, `.card--lead`, `.feature--dark`): on a dark page they blend
@@ -39,5 +46,17 @@ has deployed, then send the changed URLs (Claude SEO plugin):
     PropBoss 2026 app guide, pitch to The Adviser, honest posts in r/AusPropertyChat. Add each real
     profile to `Organization.sameAs` and `llms.txt` when it goes live.
   - Later phase: one original tool or guide (e.g. refinance savings calculator).
-- **Hero dashboard mock** is built from HTML, not a screenshot. Replace it with a real product
-  screenshot at launch.
+- **Product screenshots** (`public/assets/screens/*.webp`) are 1x crops of captures from the local
+  Portal app (`Portal/.claude/skills/brain-screens/capture.mjs`, demo account "Alex Demo",
+  2026-11-09). They were taken with the demo loans temporarily paid down (debt $2.2M → $755k, cash
+  flow +$1,040/mo); the local demo data was then restored to its real values (cash flow −$7,820/mo),
+  so a fresh capture will NOT match these images. Not uploaded to the brain. Crops
+  remove the app nav ("Clients") and the owner-name line on the tax pack. Image `alt` text quotes the
+  figures: update it when screenshots change.
+- **Feature claims rule (2026-11-09):** the site shows only features the brain marks Released.
+  Unbuilt ones (decision prompts, live rate tracking, reminders, tax/CGT planning, PM sync,
+  adviser sharing = in testing) appear only as "Coming later" on `/features/`, in pricing notes and
+  in `llms.txt`. Never market Buy/Hold/Sell advice.
+- **Open from the 2026-11-09 critique (not done):** stat sources, stale "Early access opens in
+  2026" line, "MOST POPULAR" badge, 10px badge text, page `<title>`/meta still say "The AI
+  operating system for property investors".

@@ -91,7 +91,7 @@
           "width": 1200,
           "height": 630
         },
-        "dateModified": "2026-10-04"
+        "dateModified": "2026-11-09"
       },
       {
         "@type": "WebApplication",
@@ -100,7 +100,7 @@
         "url": "https://brikfolio.com.au/",
         "mainEntityOfPage": { "@id": "https://brikfolio.com.au/#webpage" },
         "image": "https://brikfolio.com.au/assets/og-image.png",
-        "description": "AI-powered property intelligence for Australian property investors: one portfolio view across properties, loans and property managers, refinance alerts, tax and depreciation tracking, scenario modelling and Buy / Hold / Sell / Refinance decision support.",
+        "description": "Property portfolio software for Australian property investors: one view of every property, loan and tenancy, portfolio health, scenario testing against doing nothing (rate stress, refinance comparison, cash runway), document import and a tax pack for your accountant. Planning estimates, not financial advice.",
         "applicationCategory": "FinanceApplication",
         "applicationSubCategory": "Property investment portfolio management",
         "operatingSystem": "Any (web browser)",
@@ -114,13 +114,15 @@
           "geographicArea": { "@type": "Country", "name": "Australia" }
         },
         "featureList": [
-          "Portfolio aggregation and analytics: value, equity, yield, LVR and cash flow across all properties",
-          "Debt and refinance intelligence with refinance scoring",
-          "Tax and CGT optimisation with depreciation tracking aligned to ATO requirements",
-          "Scenario modelling for rate moves, rent changes, acquisitions and disposals",
-          "AI decision feed with Buy / Hold / Sell / Refinance prompts",
-          "Document and compliance vault with AI extraction of key dates",
-          "Shared access for advisors, accountants and agents"
+          "Scenario Studio: test a refinance, a rate rise or a vacancy against doing nothing",
+          "Rate and repayment stress testing, with worst year and the rate rise the portfolio can absorb",
+          "Refinance comparison after fees, break costs and cashback, with break-even",
+          "Cash runway under rent cuts, cost rises and vacancy",
+          "Portfolio health: yield, equity, debt, occupancy and concentration with a plain-words summary",
+          "Property 360 record for each property",
+          "Document import: settlement statements, property-manager statements, depreciation schedules and tenancy contracts, reviewed line by line",
+          "Tax pack per property and financial year, exportable as CSV or JSON",
+          "Data health worklist of missing items"
         ],
         "publisher": { "@id": "https://brikfolio.com.au/#organization" },
         "provider": { "@id": "https://brikfolio.com.au/#organization" },
@@ -195,11 +197,11 @@
         "@id": "https://brikfolio.com.au/#faq",
         "isPartOf": { "@id": "https://brikfolio.com.au/#webpage" },
         "mainEntity": [
-          { "@type": "Question", "name": "What is Brikfolio?", "acceptedAnswer": { "@type": "Answer", "text": "Brikfolio is an AI-powered property intelligence platform for Australian property investors. It brings your portfolio, debt, tax and documents into one view, then flags the moments to act, such as a refinance window, a lease expiry or an end-of-financial-year CGT decision." } },
+          { "@type": "Question", "name": "What is Brikfolio?", "acceptedAnswer": { "@type": "Answer", "text": "Brikfolio is a property portfolio platform for Australian property investors. It brings your properties, loans, rent, expenses and documents into one place, shows how the portfolio is doing, and lets you test a refinance, a rate rise or a vacancy against doing nothing before you act." } },
           { "@type": "Question", "name": "Who is Brikfolio for?", "acceptedAnswer": { "@type": "Answer", "text": "Brikfolio is built for Australian residential property investors, from investors with one or two properties to those managing a multi-property portfolio across several banks and property managers." } },
           { "@type": "Question", "name": "How much does Brikfolio cost?", "acceptedAnswer": { "@type": "Answer", "text": "There is a Free plan for up to 2 properties. Pro is $30 per month billed yearly or $50 billed monthly. Elite is $60 per month billed yearly or $100 billed monthly. All prices are in Australian dollars." } },
           { "@type": "Question", "name": "When can I start using Brikfolio?", "acceptedAnswer": { "@type": "Answer", "text": "Brikfolio is in pre-launch. Join the waitlist at brikfolio.app/joinwishlist and you will be among the first invited when early access opens." } },
-          { "@type": "Question", "name": "Can I share my portfolio with my accountant or advisor?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Pro and Elite plans let you share access with your advisors, accountants and agents." } },
+          { "@type": "Question", "name": "Can I share my portfolio with my accountant or advisor?", "acceptedAnswer": { "@type": "Answer", "text": "Adviser sharing is in testing now. When it launches, the Pro and Elite plans will let you invite your accountant, broker or adviser and choose what each one can see. Today you can download a tax pack or a scenario PDF to send them." } },
           { "@type": "Question", "name": "How is my data protected?", "acceptedAnswer": { "@type": "Answer", "text": "Brikfolio uses safeguards including encrypted transmission, access controls, role-based permissions, audit logs, backups and security monitoring. See the Security Policy Summary at brikfolio.com.au/legal/#security." } },
           { "@type": "Question", "name": "Is Brikfolio financial advice?", "acceptedAnswer": { "@type": "Answer", "text": "No. Brikfolio provides software tools only. It does not provide financial, investment, tax, lending or legal advice. Speak to a licensed professional before you act on any decision." } },
           { "@type": "Question", "name": "Can I cancel at any time?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can cancel in your account settings or by emailing support@brikfolio.com.au. Cancellation takes effect at the end of your current billing period." } }
@@ -271,16 +273,34 @@
       <nav class="nav__links" aria-label="Primary">
         <a href="#problem">Why</a>
         <a href="#how">How it works</a>
-        <a href="#features">Features</a>
+        <a href="features/">Features</a>
         <a href="#pricing">Pricing</a>
+        <a href="blog/">Blog</a>
         <span class="nav__social">
           <a class="nav__social-link" href="https://www.facebook.com/brikfolio" target="_blank" rel="noopener" aria-label="Brikfolio on Facebook (@brikfolio)"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8.1v3h2.5V21h2.9z"/></svg></a>
           <a class="nav__social-link" href="https://www.instagram.com/brikfolio" target="_blank" rel="noopener" aria-label="Brikfolio on Instagram (@brikfolio)"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg></a>
         </span>
         <a class="nav__login" href="https://brikfolio.app/login">Login</a>
         <a class="btn btn--nav" href="https://brikfolio.app/joinwishlist" data-cta="nav">Join waitlist</a>
+        <button class="nav__burger" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
+          <span class="nav__burger-bar" aria-hidden="true"></span>
+          <span class="nav__burger-bar" aria-hidden="true"></span>
+        </button>
       </nav>
     </div>
+    <nav class="nav__menu" id="nav-menu" aria-label="Menu" hidden>
+      <div class="container">
+        <a href="#problem">Why</a>
+        <a href="#how">How it works</a>
+        <a href="features/">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="blog/">Blog</a>
+        <div class="nav__menu-social">
+          <a class="nav__social-link" href="https://www.facebook.com/brikfolio" target="_blank" rel="noopener" aria-label="Brikfolio on Facebook (@brikfolio)"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8.1v3h2.5V21h2.9z"/></svg></a>
+          <a class="nav__social-link" href="https://www.instagram.com/brikfolio" target="_blank" rel="noopener" aria-label="Brikfolio on Instagram (@brikfolio)"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg></a>
+        </div>
+      </div>
+    </nav>
   </header>
 
   <main id="top">
@@ -288,111 +308,24 @@
     <!-- HERO -->
     <section class="hero">
       <div class="container hero__inner">
-        <p class="pill">AI-POWERED PROPERTY INTELLIGENCE</p>
-        <h1>The AI operating system for property investors</h1>
-        <p class="hero__sub">Brikfolio helps Australian property investors turn portfolio, debt, tax and documents into
-          <span class="nowrap">AI-driven</span> decisions, on time.</p>
+        <h1>Test a property decision before you make it</h1>
+        <p class="hero__sub">Brikfolio puts your properties, loans, rent and documents in one place. Then it shows what a
+          refinance, a rate rise or a vacancy would do, next to doing nothing.</p>
         <div class="hero__cta" id="waitlist">
           <a class="btn btn--primary" href="https://brikfolio.app/joinwishlist" data-cta="hero">Join waitlist</a>
+          <a class="hero__link" href="features/">See what it does</a>
         </div>
+        <p class="hero__note">Planning estimates, not financial advice. Built to work alongside your accountant and broker.</p>
 
-        <!-- DASHBOARD MOCK: illustrative only, not live data -->
-        <div class="mock" role="img"
-          aria-label="Screenshot of the Brikfolio portfolio dashboard showing portfolio value, net yield, LVR, cash flow, yield by property, and an AI action feed.">
-          <div class="mock__chrome" aria-hidden="true">
-            <span class="mock__dot"></span>
-            <span class="mock__dot"></span>
-            <span class="mock__dot"></span>
-            <span class="mock__url">brikfolio.app/portfolio</span>
-          </div>
-
-          <div class="mock__kpis" aria-hidden="true">
-            <div class="mock__kpi">
-              <div class="mock__kpi-label">Portfolio Value</div>
-              <div class="mock__kpi-value">$8.4M</div>
-              <div class="mock__kpi-meta mock__kpi-meta--accent">+6.2% YoY</div>
-            </div>
-            <div class="mock__kpi">
-              <div class="mock__kpi-label">Net Yield</div>
-              <div class="mock__kpi-value">4.8%</div>
-              <div class="mock__kpi-meta">3 properties</div>
-            </div>
-            <div class="mock__kpi">
-              <div class="mock__kpi-label">Portfolio LVR</div>
-              <div class="mock__kpi-value">58%</div>
-              <div class="mock__kpi-meta">Healthy headroom</div>
-            </div>
-            <div class="mock__kpi">
-              <div class="mock__kpi-label">Monthly Cash Flow</div>
-              <div class="mock__kpi-value mock__kpi-value--accent">+$1,550</div>
-              <div class="mock__kpi-meta">All positive</div>
-            </div>
-          </div>
-
-          <div class="mock__body" aria-hidden="true">
-            <div class="mock__panel">
-              <div class="mock__panel-title">Yield by property</div>
-              <div class="bars">
-                <div class="bar-row">
-                  <div class="bar-row__label">Sydney (A)</div>
-                  <div class="bar-row__track">
-                    <div class="bar-row__fill" style="width: 76%;"></div>
-                  </div>
-                  <div class="bar-row__value">4.6%</div>
-                </div>
-                <div class="bar-row">
-                  <div class="bar-row__label">Melbourne (B)</div>
-                  <div class="bar-row__track">
-                    <div class="bar-row__fill bar-row__fill--accent" style="width: 90%;"></div>
-                  </div>
-                  <div class="bar-row__value">5.1%</div>
-                </div>
-                <div class="bar-row">
-                  <div class="bar-row__label">Brisbane (C)</div>
-                  <div class="bar-row__track">
-                    <div class="bar-row__fill" style="width: 82%;"></div>
-                  </div>
-                  <div class="bar-row__value">4.8%</div>
-                </div>
-              </div>
-              <div class="ledger">
-                <div class="ledger__row"><span>Property A, Sydney</span><span>+$820/mo · 61% LVR</span></div>
-                <div class="ledger__row"><span>Property B, Melbourne</span><span>+$440/mo · 55% LVR</span></div>
-                <div class="ledger__row"><span>Property C, Brisbane</span><span>+$290/mo · 58% LVR</span></div>
-              </div>
-            </div>
-
-            <div class="mock__panel mock__panel--feed">
-              <div class="feed__head">
-                <div class="mock__panel-title" style="margin-bottom: 0;">AI Action Feed</div>
-                <div class="feed__count">4 LIVE</div>
-              </div>
-              <div class="feed__list">
-                <div class="feed__item">
-                  <div class="feed__item-head">
-                    <div class="feed__item-title">Refinance Property A</div>
-                    <div class="feed__tag">Review</div>
-                  </div>
-                  <div class="feed__item-body">Rate improvement detected. Potential saving on $620K debt.</div>
-                </div>
-                <div class="feed__item feed__item--urgent">
-                  <div class="feed__item-head">
-                    <div class="feed__item-title">Lease review: Property C</div>
-                    <div class="feed__tag feed__tag--urgent">Act now</div>
-                  </div>
-                  <div class="feed__item-body">Lease expires in 47 days. Initiate renewal or assess vacancy risk.</div>
-                </div>
-                <div class="feed__item">
-                  <div class="feed__item-head">
-                    <div class="feed__item-title">CGT strategy: EOFY</div>
-                    <div class="feed__tag">Optimise</div>
-                  </div>
-                  <div class="feed__item-body">Tax window open. Review depreciation and CGT offsets.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <!-- Real product screen (demo data). Source: Brikfolio brain, design-system/screens/dashboard-desktop.png -->
+        <figure class="hero__shot">
+          <picture>
+            <source media="(max-width: 640px)" srcset="assets/screens/dashboard-mobile.webp" width="390" height="522">
+            <img src="assets/screens/dashboard.webp" width="1130" height="650" fetchpriority="high" decoding="async"
+            alt="The Brikfolio portfolio overview with demo data: portfolio value $3,487,088 across 5 properties, gross yield 3.6%, portfolio LVR 21.6% on $755,105 of debt, and cash flow of $1,040 a month. Below are yield and LVR for each property, and the portfolio’s make-up by value.">
+          </picture>
+          <figcaption>The real product, with demo data.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -451,109 +384,142 @@
     <section id="how" class="how section">
       <div class="container">
         <div class="section-head">
-          <h2>From passive data to proactive decisions</h2>
+          <h2>From scattered paperwork to a tested decision</h2>
         </div>
         <div class="grid grid-4 steps">
           <div class="step">
-            <div class="step__title">Aggregate</div>
-            <p>Connect property, debt, income, expenses and documents into one unified portfolio view, replacing
-              spreadsheets and email.</p>
+            <div class="step__title">Add</div>
+            <p>Enter each property by hand, or upload a settlement statement and let Brikfolio read it. You check every
+              line before it is saved.</p>
           </div>
           <div class="step">
-            <div class="step__title">Model</div>
-            <p>Simulate cash flow, tax, refinance and growth scenarios before acting: what-ifs across RBA rate changes
-              and CGT events.</p>
-          </div>
-          <div class="step">
-            <div class="step__title">Alert</div>
-            <p>Trigger-based reminders for refinancing, lease renewals, compliance and CGT events: the right action at
-              the right moment.</p>
+            <div class="step__title">See</div>
+            <p>Value, equity, yield, debt and cash flow across every property, with one plain sentence on what it
+              means.</p>
           </div>
           <div class="step step--accent">
-            <div class="step__title">Recommend</div>
-            <p>AI-supported Buy / Hold / Sell / Refinance decision support tailored to your goals and risk profile.</p>
+            <div class="step__title">Test</div>
+            <p>Try a refinance, a rate rise or a vacancy against doing nothing, before you act.</p>
+          </div>
+          <div class="step">
+            <div class="step__title">Share</div>
+            <p>Give your accountant a tax pack for each property and year, or a scenario PDF with every assumption and
+              its source.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- FEATURES -->
-    <section id="features" class="section">
+    <!-- FEATURES: released features only. Details and "coming later" live on /features/ -->
+    <section id="tour" class="section">
       <div class="container">
         <div class="section-head">
-          <h2>One intelligence layer for every decision</h2>
+          <h2>What you can do in Brikfolio today</h2>
+          <p>Screens from the real app, filled with sample properties.</p>
         </div>
-        <div class="grid grid-3 features">
-          <div class="card feature feature--tint">
-            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="square">
-                <path d="M3 21H21" />
-                <path d="M5 17V21H9V11H5Z" />
-                <rect x="11" y="7" width="4" height="14" />
-                <rect class="fi-fill" x="17" y="3" width="4" height="15" />
-              </svg></span>
-            <div class="feature__title">Portfolio Aggregation &amp; Analytics</div>
-            <p class="feature__body">One real-time dashboard across all properties, banks, mortgages and property
-              managers: value, equity, yield, LVR and cash flow at a glance.</p>
+
+        <!-- Feature tabs. Without JavaScript every panel shows, stacked; the script turns them into tabs. -->
+        <div class="ftabs" data-ftabs>
+          <div class="ftabs__list" role="tablist" aria-label="Brikfolio features" hidden>
+            <button type="button" class="ftabs__tab" role="tab" id="ftab-scenario-studio" aria-controls="fpanel-scenario-studio" aria-selected="true">Scenario Studio</button>
+            <button type="button" class="ftabs__tab" role="tab" id="ftab-portfolio-health" aria-controls="fpanel-portfolio-health" aria-selected="false" tabindex="-1">Portfolio health</button>
+            <button type="button" class="ftabs__tab" role="tab" id="ftab-property-360" aria-controls="fpanel-property-360" aria-selected="false" tabindex="-1">Property 360</button>
+            <button type="button" class="ftabs__tab" role="tab" id="ftab-tax-pack" aria-controls="fpanel-tax-pack" aria-selected="false" tabindex="-1">Tax pack</button>
+            <button type="button" class="ftabs__tab" role="tab" id="ftab-data-health" aria-controls="fpanel-data-health" aria-selected="false" tabindex="-1">Data health</button>
           </div>
-          <div class="card feature">
-            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="square">
-                <path d="M3 5L10 12L14 8L19 13" />
-                <path class="fi-line" d="M13 17H21V9" stroke-width="2.5" />
-              </svg></span>
-            <div class="feature__title">Debt &amp; Refinance Intelligence</div>
-            <p class="feature__body">Live rate monitoring against your bank feeds. Refinance scoring surfaces savings
-              windows before they close.</p>
+        <div class="showcase ftabs__panel" role="tabpanel" id="fpanel-scenario-studio" aria-labelledby="ftab-scenario-studio">
+          <div class="showcase__text">
+            <h3>Scenario Studio</h3>
+            <p class="showcase__question">What does this change do to my portfolio, compared with doing nothing?</p>
+            <ul class="showcase__list">
+              <li>Stress your loans with a rate rise, and see your worst year.</li>
+              <li>Compare a refinance after fees, break costs and cashback.</li>
+              <li>See how long your cash lasts if rent drops or a property sits vacant.</li>
+            </ul>
+            <a class="showcase__more" href="features/#scenario-studio">More about Scenario Studio</a>
           </div>
-          <div class="card feature">
-            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="square">
-                <path d="M19 3L5 21" />
-                <rect class="fi-fill" x="3" y="3" width="6" height="6" />
-                <rect class="fi-fill" x="15" y="15" width="6" height="6" />
-              </svg></span>
-            <div class="feature__title">Tax &amp; CGT Optimisation</div>
-            <p class="feature__body">Automated depreciation tracking aligned to ATO requirements, real-time CGT per
-              property, EOFY strategy recommendations.</p>
-          </div>
-          <div class="card feature">
-            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="square">
-                <path d="M3 12H10L16 5H21" />
-                <path d="M10 12L16 19H21" />
-                <path d="M10 12H21" stroke-dasharray="2 2.5" />
-                <rect class="fi-fill" x="18" y="3" width="4" height="4" />
-              </svg></span>
-            <div class="feature__title">Scenario Modelling &amp; Forecasting</div>
-            <p class="feature__body">What-if simulations for rate moves, rent changes, acquisitions and disposals, with
-              portfolio-level impact, not single-property views.</p>
-          </div>
-          <div class="card feature feature--dark">
-            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="square">
-                <path class="fi-fill" d="M7 2L8.6 6.4L13 8L8.6 9.6L7 14L5.4 9.6L1 8L5.4 6.4Z" />
-                <path d="M16 6H23" />
-                <path d="M16 11H23" />
-                <path d="M4 18H23" />
-              </svg></span>
-            <div class="feature__title">AI Decision Feed</div>
-            <p class="feature__body">Personalised Buy / Hold / Sell / Refinance prompts updated daily, driven by your
-              portfolio, live market signals and your goals.</p>
-          </div>
-          <div class="card feature">
-            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="square">
-                <path d="M5 2H14L19 7V22H5Z" />
-                <path d="M14 2V7H19" />
-                <rect class="fi-fill" x="8" y="11" width="8" height="3" />
-                <path d="M8 18H16" />
-              </svg></span>
-            <div class="feature__title">Document &amp; Compliance Vault</div>
-            <p class="feature__body">Every contract, schedule, permit and lease in one place. AI extraction surfaces
-              key dates and obligations automatically.</p>
-          </div>
+          <figure class="showcase__media">
+            <picture>
+              <source media="(max-width: 640px)" srcset="assets/screens/scenario-mobile.webp" width="390" height="620">
+              <img class="shot" src="assets/screens/scenario-answer.webp" width="787" height="580" loading="lazy" decoding="async"
+              alt="Scenario Studio with sample data, testing a refinance of one loan. The answer reads: over 10 years this plan leaves you $2,930 better off in equity and $1,086 a year on average better off in cash flow than doing nothing.">
+            </picture>
+          </figure>
         </div>
+        <div class="showcase ftabs__panel" role="tabpanel" id="fpanel-portfolio-health" aria-labelledby="ftab-portfolio-health">
+          <div class="showcase__text">
+            <h3>Portfolio health</h3>
+            <p class="showcase__question">How is my portfolio really doing this year?</p>
+            <ul class="showcase__list">
+              <li>One plain sentence that sums up your year.</li>
+              <li>Net cash flow for each financial year.</li>
+              <li>Debt against value, and the headroom before the 80% line.</li>
+            </ul>
+            <a class="showcase__more" href="features/#portfolio-health">More about Portfolio health</a>
+          </div>
+          <figure class="showcase__media">
+            <picture>
+              <source media="(max-width: 640px)" srcset="assets/screens/portfolio-health-mobile.webp" width="390" height="620">
+              <img class="shot" src="assets/screens/tab-portfolio-health.webp" width="1000" height="737" loading="lazy" decoding="async"
+              alt="Portfolio health with sample data. The summary reads: your portfolio pays you $1,040 a month this year; debt is 22% of value, with $2,034,566 of headroom before the 80% line; 4 of 5 properties are tenanted.">
+            </picture>
+          </figure>
+        </div>
+        <div class="showcase ftabs__panel" role="tabpanel" id="fpanel-property-360" aria-labelledby="ftab-property-360">
+          <div class="showcase__text">
+            <h3>Property 360</h3>
+            <p class="showcase__question">What do I actually know about this property?</p>
+            <ul class="showcase__list">
+              <li>Value, equity, loans, tenancy, tax and documents in one record.</li>
+              <li>Upload a statement and Brikfolio reads it for you.</li>
+              <li>You check every line before it is saved.</li>
+            </ul>
+            <a class="showcase__more" href="features/#property-360">More about Property 360</a>
+          </div>
+          <figure class="showcase__media">
+            <picture>
+              <source media="(max-width: 640px)" srcset="assets/screens/property-360-mobile.webp" width="390" height="620">
+              <img class="shot" src="assets/screens/tab-property-360.webp" width="765" height="564" loading="lazy" decoding="async"
+              alt="Property 360 for a sample townhouse: current value $735,000, net equity $593,908, available equity $446,908, LVR 19.2% and weekly rent $640, with tabs for loans, valuations, tenancy, finance, tax, documents and owners.">
+            </picture>
+          </figure>
+        </div>
+        <div class="showcase ftabs__panel" role="tabpanel" id="fpanel-tax-pack" aria-labelledby="ftab-tax-pack">
+          <div class="showcase__text">
+            <h3>Tax pack</h3>
+            <p class="showcase__question">What do I hand my accountant at tax time?</p>
+            <ul class="showcase__list">
+              <li>Income, expenses, interest and depreciation for each property and year.</li>
+              <li>Print it, or download it as CSV or JSON.</li>
+              <li>Every estimate says how it was worked out.</li>
+            </ul>
+            <a class="showcase__more" href="features/#tax-pack">More about Tax pack</a>
+          </div>
+          <figure class="showcase__media">
+            <img class="shot" src="assets/screens/tab-tax-pack.webp" width="750" height="553" loading="lazy" decoding="async"
+              alt="Tax pack for a sample townhouse, financial year 2026–27: rental income $8,319.99, deductible expenses $2,176.03, estimated loan interest $3,481.84 and an estimated rental result of +$2,662.12. Buttons to download JSON or CSV, or print.">
+          </figure>
+        </div>
+        <div class="showcase ftabs__panel" role="tabpanel" id="fpanel-data-health" aria-labelledby="ftab-data-health">
+          <div class="showcase__text">
+            <h3>Data health</h3>
+            <p class="showcase__question">What is missing from my numbers?</p>
+            <ul class="showcase__list">
+              <li>A worklist of gaps, least complete property first.</li>
+              <li>Each gap links straight to its fix.</li>
+              <li>Missing data shows as “not recorded”, never as $0.</li>
+            </ul>
+            <a class="showcase__more" href="features/#data-health">More about Data health</a>
+          </div>
+          <figure class="showcase__media">
+            <img class="shot" src="assets/screens/tab-data-health.webp" width="1130" height="833" loading="lazy" decoding="async"
+              alt="Data health with sample data: 76% complete. A list by property, least complete first, with buttons such as Add valuation, Add tenancy and Upload.">
+          </figure>
+        </div>
+        </div>
+
+        <p class="later-note">Coming later: adviser sharing (in testing now), decision prompts, live rate tracking and
+          reminders. <a href="features/#coming-later">See what is planned</a></p>
       </div>
     </section>
 
@@ -610,7 +576,7 @@
               <li>Full portfolio dashboard with cash-flow analysis</li>
               <li>Portfolio scenario modelling</li>
               <li>Property vault for documents</li>
-              <li>Share access with advisors, accountants &amp; agents</li>
+              <li>Share access with advisors, accountants &amp; agents <span class="plan__note">(in testing)</span></li>
             </ul>
             <a class="plan__cta" href="https://brikfolio.app/joinwishlist" data-cta="pricing_pro">Join Pro waitlist</a>
           </div>
@@ -630,10 +596,10 @@
             <ul class="plan__features">
               <li class="plan__features-lead">Everything in Pro, plus:</li>
               <li>Advanced multi-property scenario modelling</li>
-              <li>AI insights on your portfolio and target suburbs</li>
-              <li>Property management app sync</li>
+              <li>AI insights on your portfolio and target suburbs <span class="plan__note">(coming later)</span></li>
+              <li>Property management app sync <span class="plan__note">(coming later)</span></li>
               <li>Full property lifecycle tracking</li>
-              <li>Virtual property agent <span class="plan__note">(coming soon)</span></li>
+              <li>Virtual property agent <span class="plan__note">(coming later)</span></li>
             </ul>
             <a class="plan__cta" href="https://brikfolio.app/joinwishlist" data-cta="pricing_elite">Join Elite waitlist</a>
           </div>
@@ -650,7 +616,7 @@
         <div class="faq__list">
           <details class="faq__item">
             <summary>What is Brikfolio?</summary>
-            <p>Brikfolio is an AI-powered property intelligence platform for Australian property investors. It brings your portfolio, debt, tax and documents into one view, then flags the moments to act, such as a refinance window, a lease expiry or an end-of-financial-year CGT decision.</p>
+            <p>Brikfolio is a property portfolio platform for Australian property investors. It brings your properties, loans, rent, expenses and documents into one place, shows how the portfolio is doing, and lets you test a refinance, a rate rise or a vacancy against doing nothing before you act.</p>
           </details>
           <details class="faq__item">
             <summary>Who is Brikfolio for?</summary>
@@ -666,7 +632,7 @@
           </details>
           <details class="faq__item">
             <summary>Can I share my portfolio with my accountant or advisor?</summary>
-            <p>Yes. The Pro and Elite plans let you share access with your advisors, accountants and agents.</p>
+            <p>Adviser sharing is in testing now. When it launches, the Pro and Elite plans will let you invite your accountant, broker or adviser and choose what each one can see. Today you can download a tax pack or a scenario PDF to send them.</p>
           </details>
           <details class="faq__item">
             <summary>How is my data protected?</summary>
@@ -730,7 +696,8 @@
         <p>Support: <a href="mailto:support@brikfolio.com.au">support@brikfolio.com.au</a></p>
         <p>Governing law: Victoria, Australia</p>
       </div>
-      <nav class="footer__legal" aria-label="Legal">
+      <nav class="footer__legal" aria-label="Footer">
+        <a href="blog/">Blog</a>
         <a href="legal/#terms">Terms of Use</a>
         <a href="legal/#privacy">Privacy Policy</a>
         <a href="legal/#cookies">Cookie Policy</a>
@@ -739,6 +706,42 @@
       </nav>
     </div>
   </footer>
+
+  <!-- Feature tabs: arrow keys, Home and End move between tabs (WAI-ARIA tabs pattern) -->
+  <script>
+    (function () {
+      var root = document.querySelector('[data-ftabs]');
+      if (!root) return;
+      var list = root.querySelector('[role="tablist"]');
+      var tabs = Array.prototype.slice.call(root.querySelectorAll('[role="tab"]'));
+      var panels = tabs.map(function (t) { return document.getElementById(t.getAttribute('aria-controls')); });
+      function select(i, focus) {
+        tabs.forEach(function (t, n) {
+          var on = n === i;
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+          t.tabIndex = on ? 0 : -1;
+          panels[n].hidden = !on;
+        });
+        if (focus) tabs[i].focus();
+      }
+      tabs.forEach(function (t, n) {
+        t.addEventListener('click', function () { select(n, false); });
+        t.addEventListener('keydown', function (e) {
+          var k = e.key, i = n;
+          if (k === 'ArrowRight') i = (n + 1) % tabs.length;
+          else if (k === 'ArrowLeft') i = (n - 1 + tabs.length) % tabs.length;
+          else if (k === 'Home') i = 0;
+          else if (k === 'End') i = tabs.length - 1;
+          else return;
+          e.preventDefault();
+          select(i, true);
+        });
+      });
+      list.hidden = false;
+      root.classList.add('ftabs--ready');
+      select(0, false);
+    })();
+  </script>
 
   <!-- CTA tracking: one GA4 + Meta event per waitlist click, tagged with where it was clicked -->
   <script>
@@ -751,6 +754,17 @@
     });
   </script>
 
+  <!-- Phone burger menu: opens the section links; Escape or a link closes it -->
+  <script>
+    (function () {
+      var b = document.querySelector('.nav__burger'), m = document.getElementById('nav-menu');
+      if (!b || !m) return;
+      function set(open) { b.setAttribute('aria-expanded', open ? 'true' : 'false'); m.hidden = !open; }
+      b.addEventListener('click', function () { set(m.hidden); });
+      m.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !m.hidden) { set(false); b.focus(); } });
+    })();
+  </script>
 </body>
 
 </html>

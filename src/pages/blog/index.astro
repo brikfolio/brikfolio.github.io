@@ -1,0 +1,79 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getPosts, formatDate, isoDate, absolute } from '../../lib/posts';
+
+const posts = await getPosts();
+
+const title = 'Blog | Brikfolio';
+const description =
+  'News, guides and ideas from the Brikfolio team for Australian property investors.';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Blog',
+      '@id': absolute('/blog/#blog'),
+      url: absolute('/blog/'),
+      name: 'Brikfolio blog',
+      description,
+      inLanguage: 'en-AU',
+      isPartOf: { '@id': absolute('/#website') },
+      publisher: { '@id': absolute('/#organization') },
+      blogPost: posts.map((p) => ({ '@id': absolute(`/blog/${p.id}/#article`) })),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': absolute('/blog/#breadcrumb'),
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: absolute('/') },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: absolute('/blog/') },
+      ],
+    },
+  ],
+};
+---
+
+<Base title={title} description={description} path="/blog/" jsonLd={jsonLd}>
+  <section class="blog">
+    <div class="container">
+      <header class="blog__header">
+        <h1>From the Brikfolio team</h1>
+        <p>News, guides and ideas for Australian property investors.</p>
+      </header>
+
+      {
+        posts.length === 0 ? (
+          <p class="blog__empty">No posts yet. Check back soon.</p>
+        ) : (
+          <ul class="post-list" role="list">
+            {posts.map((post) => (
+              <li class="post-card">
+                {post.data.cover && (
+                  <img
+                    class="post-card__cover"
+                    src={post.data.cover}
+                    alt={post.data.cover_alt ?? ''}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                )}
+                <div class="post-card__body">
+                  <p class="post-meta">
+                    <time datetime={isoDate(post.data.date)}>{formatDate(post.data.date)}</time>
+                    {post.data.author && <span> · {post.data.author}</span>}
+                    {post.data.draft && <span class="post-meta__draft">Draft</span>}
+                  </p>
+                  <h2 class="post-card__title">
+                    <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+                  </h2>
+                  <p class="post-card__summary">{post.data.description}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+  </section>
+</Base>

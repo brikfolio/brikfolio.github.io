@@ -1,0 +1,48 @@
+# Brikfolio
+
+> Brikfolio is a property portfolio platform for Australian property investors. It brings properties, loans, rent, expenses and documents into one place, shows how the portfolio is doing, and lets an investor test a refinance, a rate rise or a vacancy against doing nothing before they act. Outputs are planning estimates, not financial advice. Brikfolio is in pre-launch; early access opens in 2026 through a waitlist.
+
+Brikfolio is a trading name of AirAi Pty Ltd (ABN 37 680 869 845), governed by the laws of Victoria, Australia. All prices are in Australian dollars (AUD).
+
+## Product (released)
+
+- Scenario Studio: save a what-if scenario and compare it with "do nothing", recomputed from live data. Covers rate and repayment stress (worst year, the rate rise the portfolio can absorb), refinance comparison (net benefit after fees, break costs and cashback, break-even) and a monthly cash runway under rent cuts, cost rises and vacancy. Exports a PDF listing every assumption with its source and date.
+- Portfolio health: yield, equity, debt, occupancy and concentration for a chosen year, with a plain-words summary and the headroom before the 80% LVR line.
+- Property 360: one record per property covering value, equity, loans, valuations, tenancy, finance, tax, documents and owners.
+- Document import: reads settlement statements, property-manager statements, depreciation schedules and tenancy contracts; the investor reviews every line before it is saved. Bank CSV imports match to transactions.
+- Tax pack: per property and financial year, rental income, deductible expenses, estimated loan interest and depreciation, with an estimated rental result. Print or export as CSV or JSON.
+- Data health: a worklist of missing items per property, each linked to its fix.
+
+## Coming later (not in the product yet)
+
+- Adviser sharing (in testing), decision prompts, live rate tracking, reminders, tax and CGT planning, property manager sync.
+
+## Pricing
+
+- Free — $0/month: up to 2 properties, basic portfolio dashboard, manual data entry.
+- Pro — $30/month billed yearly, or $50/month billed monthly: unlimited properties, auto-create from documents, statement import, full cash-flow dashboard, scenario modelling, document vault, shared access for advisors, accountants and agents (in testing).
+- Elite — $60/month billed yearly, or $100/month billed monthly: everything in Pro, plus advanced multi-property scenario modelling, AI insights on the portfolio and target suburbs (coming later), property management app sync (coming later), full property lifecycle tracking and a virtual property agent (coming later).
+
+## Links
+
+- [Home page](https://brikfolio.com.au/): product overview and pricing
+- [Features](https://brikfolio.com.au/features/): each released feature in detail, with screenshots, and what is coming later
+- [Blog](https://brikfolio.com.au/blog/): news, guides and ideas from the Brikfolio team ([RSS](https://brikfolio.com.au/blog/rss.xml))
+- [Join the waitlist](https://brikfolio.app/joinwishlist): sign up for early access
+- [Login](https://brikfolio.app/login): sign in to the Brikfolio app
+- [Facebook](https://www.facebook.com/brikfolio): @brikfolio
+- [Instagram](https://www.instagram.com/brikfolio): @brikfolio
+
+## Legal
+
+- [Terms of Use](https://brikfolio.com.au/legal/#terms)
+- [Privacy Policy](https://brikfolio.com.au/legal/#privacy)
+- [Cookie Policy](https://brikfolio.com.au/legal/#cookies)
+- [Security Policy Summary](https://brikfolio.com.au/legal/#security)
+
+## Optional
+
+- [Website Terms and Conditions](https://brikfolio.com.au/legal/#website-terms)
+- [Data Retention and Deletion Policy](https://brikfolio.com.au/legal/#data-retention)
+- [Acceptable Use Policy](https://brikfolio.com.au/legal/#acceptable-use)
+- Support: support@brikfolio.com.au

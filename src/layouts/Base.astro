@@ -1,0 +1,200 @@
+---
+// Shared shell for Astro-built pages (the blog). The landing page (public/index.html)
+// and legal page (public/legal/index.html) are hand-written HTML with the same nav,
+// footer and analytics: when you change one, change the others.
+import { absolute } from '../lib/posts';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string; // site path with trailing slash, e.g. "/blog/"
+  ogType?: 'website' | 'article';
+  image?: string;
+  imageAlt?: string;
+  jsonLd?: object;
+}
+
+const {
+  title,
+  description,
+  path,
+  ogType = 'website',
+  image = '/assets/og-image.png',
+  imageAlt = 'Brikfolio — The AI operating system for property investors',
+  jsonLd,
+} = Astro.props;
+
+const url = absolute(path);
+const imageUrl = absolute(image);
+const isDefaultImage = image === '/assets/og-image.png';
+---
+
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={url} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="Brikfolio" />
+    <meta property="og:locale" content="en_AU" />
+    <meta property="og:url" content={url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={imageUrl} />
+    {isDefaultImage && <meta property="og:image:width" content="1200" />}
+    {isDefaultImage && <meta property="og:image:height" content="630" />}
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+    <meta name="theme-color" content="#1d2a4d" />
+    <slot name="head" />
+
+    {jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+
+    <link rel="alternate" type="application/rss+xml" title="Brikfolio blog" href="/blog/rss.xml" />
+    <link rel="preload" href="/assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" sizes="180x180" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+
+    <!-- Analytics: GA4 + Meta Pixel (same set-up as public/index.html). -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-XM6E0B61GG');
+
+      !function (f) {
+        if (f.fbq) return; var n = f.fbq = function () {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = [];
+      }(window);
+      fbq('init', '1408786464565174');
+      fbq('track', 'PageView');
+
+      (function () {
+        function inject(src) {
+          var s = document.createElement('script'); s.async = true; s.src = src;
+          document.head.appendChild(s);
+        }
+        function loadVendors() {
+          inject('https://www.googletagmanager.com/gtag/js?id=G-XM6E0B61GG');
+          inject('https://connect.facebook.net/en_US/fbevents.js');
+        }
+        function onLoad() {
+          if ('requestIdleCallback' in window) requestIdleCallback(loadVendors, { timeout: 2000 });
+          else setTimeout(loadVendors, 1);
+        }
+        if (document.readyState === 'complete') onLoad();
+        else window.addEventListener('load', onLoad);
+      })();
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=1408786464565174&ev=PageView&noscript=1" alt="" /></noscript>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <header class="nav">
+      <div class="container nav__inner">
+        <a class="nav__brand" href="/" aria-label="Brikfolio home">
+          <img class="brand-mark brand-mark--md" src="/assets/logo-mark.svg" alt="" width="332" height="355" />
+          <span class="nav__wordmark">Brikfolio</span>
+        </a>
+        <nav class="nav__links" aria-label="Primary">
+          <a href="/#problem">Why</a>
+          <a href="/#how">How it works</a>
+          <a href="/features/" aria-current={path.startsWith('/features/') ? 'page' : undefined}>Features</a>
+          <a href="/#pricing">Pricing</a>
+          <a href="/blog/" aria-current={path.startsWith('/blog/') ? 'page' : undefined}>Blog</a>
+          <span class="nav__social">
+            <a class="nav__social-link" href="https://www.facebook.com/brikfolio" target="_blank" rel="noopener" aria-label="Brikfolio on Facebook (@brikfolio)"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8.1v3h2.5V21h2.9z"/></svg></a>
+            <a class="nav__social-link" href="https://www.instagram.com/brikfolio" target="_blank" rel="noopener" aria-label="Brikfolio on Instagram (@brikfolio)"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg></a>
+          </span>
+          <a class="nav__login" href="https://brikfolio.app/login">Login</a>
+          <a class="btn btn--nav" href="https://brikfolio.app/joinwishlist" data-cta="nav">Join waitlist</a>
+          <button class="nav__burger" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
+            <span class="nav__burger-bar" aria-hidden="true"></span>
+            <span class="nav__burger-bar" aria-hidden="true"></span>
+          </button>
+        </nav>
+      </div>
+      <nav class="nav__menu" id="nav-menu" aria-label="Menu" hidden>
+        <div class="container">
+          <a href="/#problem">Why</a>
+          <a href="/#how">How it works</a>
+          <a href="/features/" aria-current={path.startsWith('/features/') ? 'page' : undefined}>Features</a>
+          <a href="/#pricing">Pricing</a>
+          <a href="/blog/" aria-current={path.startsWith('/blog/') ? 'page' : undefined}>Blog</a>
+          <div class="nav__menu-social">
+            <a class="nav__social-link" href="https://www.facebook.com/brikfolio" target="_blank" rel="noopener" aria-label="Brikfolio on Facebook (@brikfolio)"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8.1v3h2.5V21h2.9z"/></svg></a>
+            <a class="nav__social-link" href="https://www.instagram.com/brikfolio" target="_blank" rel="noopener" aria-label="Brikfolio on Instagram (@brikfolio)"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg></a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main id="content">
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div class="footer__brand">
+          <img class="brand-mark brand-mark--sm" src="/assets/logo-mark.svg" alt="" width="332" height="355" />
+          <span class="footer__wordmark">Brikfolio</span>
+        </div>
+        <div class="footer__company">
+          <p>© AirAi Pty Ltd ABN 37 680 869 845. All rights reserved.</p>
+          <p>Brikfolio is a trading name of AirAi Pty Ltd.</p>
+          <p>Support: <a href="mailto:support@brikfolio.com.au">support@brikfolio.com.au</a></p>
+          <p>Governing law: Victoria, Australia</p>
+        </div>
+        <nav class="footer__legal" aria-label="Footer">
+          <a href="/blog/">Blog</a>
+          <a href="/legal/#terms">Terms of Use</a>
+          <a href="/legal/#privacy">Privacy Policy</a>
+          <a href="/legal/#cookies">Cookie Policy</a>
+          <a href="/legal/#security">Security</a>
+          <a href="mailto:support@brikfolio.com.au">Contact Us</a>
+        </nav>
+      </div>
+    </footer>
+
+    <!-- Phone burger menu (same script as public/index.html): Escape or a link closes it -->
+    <script is:inline>
+      (function () {
+        var b = document.querySelector('.nav__burger'), m = document.getElementById('nav-menu');
+        if (!b || !m) return;
+        function set(open) { b.setAttribute('aria-expanded', open ? 'true' : 'false'); m.hidden = !open; }
+        b.addEventListener('click', function () { set(m.hidden); });
+        m.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !m.hidden) { set(false); b.focus(); } });
+      })();
+    </script>
+
+    <!-- CTA tracking: one GA4 + Meta event per waitlist click, tagged with where it was clicked -->
+    <script is:inline>
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[data-cta]');
+        if (!a) return;
+        var where = a.getAttribute('data-cta');
+        if (window.gtag) gtag('event', 'generate_lead', { cta_location: where, transport_type: 'beacon' });
+        if (window.fbq) fbq('track', 'Lead', { content_name: 'waitlist', content_category: where });
+      });
+    </script>
+  </body>
+</html>

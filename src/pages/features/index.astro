@@ -1,0 +1,238 @@
+---
+import Base from '../../layouts/Base.astro';
+import { absolute } from '../../lib/posts';
+
+// Features that are released in the product (source: Brikfolio brain, feature entities).
+// Screens are real product captures with demo data (public/assets/screens/).
+const features = [
+  {
+    id: 'portfolio-health',
+    name: 'Portfolio health',
+    question: 'How is my portfolio really doing this year?',
+    lede:
+      'Yield, equity, debt, occupancy and concentration for the year you pick, with one plain sentence on top that says what it all means.',
+    points: [
+      'Net cash flow for each financial year, so you can see the trend, not just today.',
+      'Debt as a share of value, and how much headroom is left before the 80% line.',
+      'Filter by property type and state. Switch between financial and calendar year.',
+      'A “How is this worked out?” note under every figure.',
+    ],
+    image: { src: '/assets/screens/portfolio-health.webp', w: 1130, h: 785 },
+    phone: '/assets/screens/portfolio-health-mobile.webp',
+    alt: 'Portfolio health with sample data. The summary reads: your portfolio pays you $1,040 a month this year; debt is 22% of value, with $2,034,566 of headroom before the 80% line; 4 of 5 properties are tenanted.',
+  },
+  {
+    id: 'property-360',
+    name: 'Property 360 and document import',
+    question: 'What do I actually know about this property?',
+    lede:
+      'Each property gets one record: value, equity, loans, valuations, tenancy, finance, tax, documents and owners. Upload a statement and Brikfolio reads it for you.',
+    points: [
+      'Reads settlement statements, property-manager statements, depreciation schedules and tenancy contracts.',
+      'You check every line before it is saved. Nothing goes in unseen.',
+      'Importing a statement again replaces the old import. It does not double your figures.',
+      'Bank CSV imports match to your transactions automatically.',
+    ],
+    image: { src: '/assets/screens/property-360.webp', w: 1130, h: 735 },
+    phone: '/assets/screens/property-360-mobile.webp',
+    alt: 'Property 360 for a sample townhouse: current value $735,000, net equity $593,908, available equity $446,908, LVR 19.2% and weekly rent $640, with tabs for loans, valuations, tenancy, finance, tax, documents and owners.',
+  },
+  {
+    id: 'tax-pack',
+    name: 'Tax pack',
+    question: 'What do I hand my accountant at tax time?',
+    lede:
+      'A pack for each property and financial year: rental income, deductible expenses, estimated loan interest and depreciation, with an estimated rental result.',
+    points: [
+      'Print it, or download it as CSV or JSON for your accountant’s tools.',
+      'Every estimate is labelled as an estimate, with how it was worked out.',
+      'It says plainly what it does not calculate, so nothing is assumed.',
+    ],
+    image: { src: '/assets/screens/tax-pack.webp', w: 750, h: 615 },
+    alt: 'Tax pack for a sample townhouse, financial year 2026–27: rental income $8,319.99, deductible expenses $2,176.03, estimated loan interest $3,481.84 and an estimated rental result of +$2,662.12. Buttons to download JSON or CSV, or print.',
+  },
+  {
+    id: 'data-health',
+    name: 'Data health',
+    question: 'What is missing from my numbers?',
+    lede:
+      'A worklist of what each property still needs, least complete first. Each missing item links straight to the screen that fixes it.',
+    points: [
+      'Missing data shows as “not recorded”, never as a confident $0.',
+      'See at a glance which properties are ready for analysis and tax time.',
+    ],
+    image: { src: '/assets/screens/data-health.webp', w: 1130, h: 565 },
+    alt: 'Data health screen with demo data: 76% complete, 0 of 5 properties fully complete. A list by property, least complete first, with a progress bar for each and buttons such as Add valuation, Add tenancy and Upload.',
+  },
+];
+
+const later = [
+  { name: 'Adviser sharing', status: 'In testing', body: 'Invite your accountant, broker or adviser, and choose what each one can see and change.' },
+  { name: 'Decision prompts', status: 'Planned', body: 'Prompts to review a loan, a lease or a sale, raised from your own data. You decide what to do. Brikfolio does not give advice.' },
+  { name: 'Live rate tracking', status: 'Planned', body: 'Compare your loan rates with the market without typing them in.' },
+  { name: 'Reminders', status: 'Planned', body: 'Lease renewals, fixed-rate expiries and compliance dates, before they are due.' },
+  { name: 'Tax and CGT planning', status: 'Planned', body: 'Estimate capital gains tax on a sale and plan around the end of the financial year.' },
+  { name: 'Property manager sync', status: 'Planned', body: 'Rent and expenses from your property manager’s software, without uploads.' },
+];
+
+const title = 'Features | Brikfolio';
+const description =
+  'What Brikfolio does today: Scenario Studio, portfolio health, Property 360 with document import, tax packs and data health. Real screens, demo data.';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': absolute('/features/#webpage'),
+      url: absolute('/features/'),
+      name: title,
+      description,
+      inLanguage: 'en-AU',
+      isPartOf: { '@id': absolute('/#website') },
+      about: { '@id': absolute('/#software') },
+      publisher: { '@id': absolute('/#organization') },
+      breadcrumb: { '@id': absolute('/features/#breadcrumb') },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': absolute('/features/#breadcrumb'),
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: absolute('/') },
+        { '@type': 'ListItem', position: 2, name: 'Features', item: absolute('/features/') },
+      ],
+    },
+  ],
+};
+---
+
+<Base title={title} description={description} path="/features/" jsonLd={jsonLd}>
+  <header class="fx-head">
+    <div class="container">
+      <h1>What Brikfolio does today</h1>
+      <p class="fx-head__lede">
+        Five tools for Australian property investors. These are screens from the real app, with sample properties.
+        Every number has a note that explains how it was worked out.
+      </p>
+      <nav class="fx-jump" aria-label="On this page">
+        <a href="#scenario-studio">Scenario Studio</a>
+        {features.map((f) => <a href={`#${f.id}`}>{f.name}</a>)}
+        <a href="#coming-later">Coming later</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Anchor feature: Scenario Studio -->
+  <section id="scenario-studio" class="fx fx--anchor" aria-labelledby="scenario-studio-title">
+    <div class="container">
+      <div class="fx-anchor__intro">
+        <div>
+          <h2 id="scenario-studio-title">Scenario Studio</h2>
+          <p class="fx__question">What does this change do to my portfolio, compared with doing nothing?</p>
+        </div>
+        <div>
+          <p class="fx__lede">
+            Test a refinance, a rate rise or a rent cut before you act. Each scenario starts from “do nothing”,
+            rebuilt from your live data, and answers in one sentence: how much better or worse off you would be.
+          </p>
+          <ul class="fx__list">
+            <li><strong>Rate and repayment stress.</strong> A rate path or a switch from interest-only to principal and interest, your worst year, and the rate rise your portfolio can absorb.</li>
+            <li><strong>Refinance comparison.</strong> One loan against a proposed loan: the net benefit after fees, break costs and cashback, and when it breaks even.</li>
+            <li><strong>Cash runway.</strong> Rent cuts, cost rises and vacancy, month by month, and the first month your cash drops below your buffer.</li>
+            <li><strong>Evidence you can share.</strong> Save scenarios, compare two side by side, and download a PDF with every assumption, its source and its date.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fx-anchor__media">
+        <figure>
+          <picture>
+          <source media="(max-width: 640px)" srcset="/assets/screens/scenario-mobile.webp" width="390" height="620" />
+          <img class="shot" src="/assets/screens/scenario-studio.webp" width="1130" height="705" loading="lazy" decoding="async"
+            alt="Scenario Studio with sample data, testing a refinance of one loan. The answer reads: over 10 years this plan leaves you $2,930 better off in equity and $1,086 a year on average better off in cash flow than doing nothing." />
+          </picture>
+          <figcaption>Refinance one loan, compared with doing nothing.</figcaption>
+        </figure>
+        <figure>
+          <img class="shot" src="/assets/screens/scenario-stress.webp" width="785" height="420" loading="lazy" decoding="async"
+            alt="The Stress tab of Scenario Studio with sample data: the portfolio can absorb a rate rise of 8% before yearly cash flow goes below zero. Worst-year cash flow ranges from $59,743 with a 1% rate cut to $36,102 with a 3% rise." />
+          <figcaption>The Stress tab: worst-year cash flow at each rate change.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  {
+    features.map((f, i) => (
+      <section id={f.id} class:list={['fx', { 'fx--flip': i % 2 === 1 }]} aria-labelledby={`${f.id}-title`}>
+        <div class="container fx__inner">
+          <div class="fx__text">
+            <h2 id={`${f.id}-title`}>{f.name}</h2>
+            <p class="fx__question">{f.question}</p>
+            <p class="fx__lede">{f.lede}</p>
+            <ul class="fx__list">
+              {f.points.map((p) => <li>{p}</li>)}
+            </ul>
+          </div>
+          <figure class="fx__media">
+            <picture>
+              {f.phone && <source media="(max-width: 640px)" srcset={f.phone} width="390" height="620" />}
+              <img class="shot" src={f.image.src} width={f.image.w} height={f.image.h} alt={f.alt} loading="lazy" decoding="async" />
+            </picture>
+          </figure>
+        </div>
+      </section>
+    ))
+  }
+
+  <section class="how section" aria-labelledby="numbers-title">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="numbers-title">How Brikfolio treats your numbers</h2>
+      </div>
+      <div class="grid grid-4 steps">
+        <div class="step">
+          <div class="step__title">Every figure has a source</div>
+          <p>Each number links to a note that says where it came from and how it was worked out.</p>
+        </div>
+        <div class="step">
+          <div class="step__title">Gaps stay visible</div>
+          <p>If something is missing, Brikfolio says “not recorded”. It does not show a confident $0.</p>
+        </div>
+        <div class="step">
+          <div class="step__title">Estimates are labelled</div>
+          <p>Scenarios and tax packs are planning estimates, not lender approval or a taxable figure.</p>
+        </div>
+        <div class="step step--accent">
+          <div class="step__title">You and your advisers decide</div>
+          <p>Brikfolio works alongside your accountant and broker. It is not financial advice.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="coming-later" class="section later" aria-labelledby="later-title">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="later-title">Coming later</h2>
+        <p>These are on our roadmap but not in the product yet. Plans can change.</p>
+      </div>
+      <ul class="later__list" role="list">
+        {
+          later.map((l) => (
+            <li class="later__item">
+              <span class="later__name">{l.name}</span>
+              <span class:list={['later__status', { 'later__status--testing': l.status === 'In testing' }]}>{l.status}</span>
+              <p class="later__body">{l.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+
+      <aside class="post__cta" aria-label="Join the Brikfolio waitlist">
+        <h2>See your own portfolio this way</h2>
+        <p>Join the waitlist to get early access to Brikfolio.</p>
+        <a class="btn btn--primary" href="https://brikfolio.app/joinwishlist" data-cta="features">Join waitlist</a>
+      </aside>
+    </div>
+  </section>
+</Base>

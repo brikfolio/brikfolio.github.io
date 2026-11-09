@@ -1,0 +1,68 @@
+# Pages CMS (https://pagescms.org): the web editor that blog writers use.
+# Writers log in at https://app.pagescms.org. Each save commits to this repo, and
+# GitHub Actions publishes the site again (about 1-2 minutes).
+# Keep these fields in step with src/content.config.ts.
+
+media:
+  input: public/images/blog
+  output: /images/blog
+  rename: safe
+  categories: [image]
+
+content:
+  - name: blog
+    label: Blog posts
+    type: collection
+    path: src/content/blog
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      fields: [title, date, author, draft]
+      primary: title
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+        options:
+          maxlength: 110
+      - name: description
+        label: Summary
+        description: One or two sentences. It shows on the blog page and in Google results.
+        type: text
+        required: true
+        options:
+          maxlength: 200
+      - name: date
+        label: Publish date
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: author
+        label: Author
+        description: Your name, as readers will see it.
+        type: string
+      - name: cover
+        label: Cover image
+        description: Optional. A wide image (landscape) looks best.
+        type: image
+      - name: cover_alt
+        label: Cover image description
+        description: Say in a few words what the image shows. Screen readers read this aloud.
+        type: string
+      - name: draft
+        label: Draft
+        description: Turn this off to publish the post on the website. Turn it on to hide the post.
+        type: boolean
+        default: true
+      - name: body
+        label: Post
+        type: rich-text
+        options:
+          format: markdown
+          rename: safe
