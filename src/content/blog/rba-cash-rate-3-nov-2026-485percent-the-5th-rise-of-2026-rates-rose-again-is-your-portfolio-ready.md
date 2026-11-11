@@ -7,7 +7,7 @@ date: 2026-11-12
 author: Ravi Jain
 cover: /images/blog/brikfolio-blog-rate-stress-16x9.png
 cover_alt: RBA rate rise again?
-draft: true
+draft: false
 ---
 ## Rates are at an 18-year high. Is your portfolio ready for the next move?
 
