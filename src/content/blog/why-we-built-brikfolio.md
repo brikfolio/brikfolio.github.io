@@ -6,7 +6,7 @@ date: 2026-11-11
 author: Ravi Jain
 cover: /images/blog/brikfolio-why-we-built-16x9-1.png
 cover_alt: Why we built Brikfolio?
-draft: true
+draft: false
 ---
 Quick question. How much equity do you have across your investment properties today?
 
