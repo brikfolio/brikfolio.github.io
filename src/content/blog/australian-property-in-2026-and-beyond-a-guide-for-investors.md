@@ -75,7 +75,7 @@ The common thread is clear, current numbers. Investors who know their position c
 
 The mid-sized capitals hold the edge, but none is immune right now. Domain's forecast splits the country in two.
 
-[embed: node/2459b4ea-ac23]
+![image.png](/images/blog/image.png)
 
 A forecast is not the full picture. Brisbane and Perth led the falls in October, down 2.0% and 1.7%. High rates are now biting everywhere. The edge below is about the next few years, not the next few months.
 
