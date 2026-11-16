@@ -2,13 +2,11 @@
 import Base from '../../layouts/Base.astro';
 import { absolute } from '../../lib/posts';
 
-// Features that are released in the product (source: Brikfolio brain, feature entities).
-// Screens are real product captures with demo data (public/assets/screens/).
-const features = [
-  {
-    id: 'portfolio-health',
-    name: 'Portfolio health',
-    question: 'How is my portfolio really doing this year?',
+// Released features only (source: Brikfolio brain, feature entities).
+// Each sheet below is the real app rebuilt in HTML with the demo account's figures
+// (the same figures as the captures in public/assets/screens/, 2026-11-09).
+const features = {
+  health: {
     lede:
       'Yield, equity, debt, occupancy and concentration for the year you pick, with one plain sentence on top that says what it all means.',
     points: [
@@ -17,14 +15,8 @@ const features = [
       'Filter by property type and state. Switch between financial and calendar year.',
       'A “How is this worked out?” note under every figure.',
     ],
-    image: { src: '/assets/screens/portfolio-health.webp', w: 1130, h: 785 },
-    phone: '/assets/screens/portfolio-health-mobile.webp',
-    alt: 'Portfolio health with sample data. The summary reads: your portfolio pays you $1,040 a month this year; debt is 22% of value, with $2,034,566 of headroom before the 80% line; 4 of 5 properties are tenanted.',
   },
-  {
-    id: 'property-360',
-    name: 'Property 360 and document import',
-    question: 'What do I actually know about this property?',
+  p360: {
     lede:
       'Each property gets one record: value, equity, loans, valuations, tenancy, finance, tax, documents and owners. Upload a statement and Brikfolio reads it for you.',
     points: [
@@ -33,14 +25,8 @@ const features = [
       'Importing a statement again replaces the old import. It does not double your figures.',
       'Bank CSV imports match to your transactions automatically.',
     ],
-    image: { src: '/assets/screens/property-360.webp', w: 1130, h: 735 },
-    phone: '/assets/screens/property-360-mobile.webp',
-    alt: 'Property 360 for a sample townhouse: current value $735,000, net equity $593,908, available equity $446,908, LVR 19.2% and weekly rent $640, with tabs for loans, valuations, tenancy, finance, tax, documents and owners.',
   },
-  {
-    id: 'tax-pack',
-    name: 'Tax pack',
-    question: 'What do I hand my accountant at tax time?',
+  tax: {
     lede:
       'A pack for each property and financial year: rental income, deductible expenses, estimated loan interest and depreciation, with an estimated rental result.',
     points: [
@@ -48,23 +34,16 @@ const features = [
       'Every estimate is labelled as an estimate, with how it was worked out.',
       'It says plainly what it does not calculate, so nothing is assumed.',
     ],
-    image: { src: '/assets/screens/tax-pack.webp', w: 750, h: 615 },
-    alt: 'Tax pack for a sample townhouse, financial year 2026–27: rental income $8,319.99, deductible expenses $2,176.03, estimated loan interest $3,481.84 and an estimated rental result of +$2,662.12. Buttons to download JSON or CSV, or print.',
   },
-  {
-    id: 'data-health',
-    name: 'Data health',
-    question: 'What is missing from my numbers?',
+  data: {
     lede:
       'A worklist of what each property still needs, least complete first. Each missing item links straight to the screen that fixes it.',
     points: [
       'Missing data shows as “not recorded”, never as a confident $0.',
       'See at a glance which properties are ready for analysis and tax time.',
     ],
-    image: { src: '/assets/screens/data-health.webp', w: 1130, h: 565 },
-    alt: 'Data health screen with demo data: 76% complete, 0 of 5 properties fully complete. A list by property, least complete first, with a progress bar for each and buttons such as Add valuation, Add tenancy and Upload.',
   },
-];
+};
 
 const later = [
   { name: 'Adviser sharing', status: 'In testing', body: 'Invite your accountant, broker or adviser, and choose what each one can see and change.' },
@@ -77,7 +56,7 @@ const later = [
 
 const title = 'Features | Brikfolio';
 const description =
-  'What Brikfolio does today: Scenario Studio, portfolio health, Property 360 with document import, tax packs and data health. Real screens, demo data.';
+  'What Brikfolio does today: Scenario Studio, portfolio health, Property 360 with document import, tax packs and data health. The real app, rebuilt with demo data.';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -107,35 +86,54 @@ const jsonLd = {
 ---
 
 <Base title={title} description={description} path="/features/" jsonLd={jsonLd}>
-  <header class="fx-head">
-    <div class="container">
-      <h1>What Brikfolio does today</h1>
-      <p class="fx-head__lede">
-        Five tools for Australian property investors. These are screens from the real app, with sample properties.
-        Every number has a note that explains how it was worked out.
-      </p>
-      <nav class="fx-jump" aria-label="On this page">
-        <a href="#scenario-studio">Scenario Studio</a>
-        {features.map((f) => <a href={`#${f.id}`}>{f.name}</a>)}
-        <a href="#coming-later">Coming later</a>
-      </nav>
+  <Fragment slot="styles">
+    <link rel="preload" href="/assets/fonts/albert-sans-600-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/assets/css/home.css" />
+    <script is:inline>document.documentElement.classList.add('js');</script>
+    <script is:inline src="/assets/js/home.js" defer></script>
+  </Fragment>
+
+  <!-- HEADER: the file's cover; the jump links are its index tabs -->
+  <header class="f-head">
+    <div class="container f-head__grid">
+      <div>
+        <h1>What Brikfolio does today</h1>
+        <p class="f-head__lede">
+          Five tools for Australian property investors. Every sheet on this page is the real app, rebuilt here with sample
+          properties. Every estimate says how it was worked out.
+        </p>
+      </div>
+      <div class="f-file">
+        <div class="f-file__back" aria-hidden="true"></div>
+        <nav class="b-sheet f-contents" aria-label="On this page">
+          <div class="b-sheet__tab">Contents · demo portfolio</div>
+          <ol>
+            <li><a href="#scenario-studio"><span>Scenario Studio</span><span class="b-num">+$2,930 equity</span></a></li>
+            <li><a href="#portfolio-health"><span>Portfolio health</span><span class="b-num">$1,040 / mo</span></a></li>
+            <li><a href="#property-360"><span>Property 360</span><span class="b-num">$735,000</span></a></li>
+            <li><a href="#tax-pack"><span>Tax pack</span><span class="b-num">+$2,662.12</span></a></li>
+            <li><a href="#data-health"><span>Data health</span><span class="b-num">76% complete</span></a></li>
+            <li class="is-later"><a href="#coming-later"><span>Coming later</span><span class="b-tag">not in the app yet</span></a></li>
+          </ol>
+        </nav>
+      </div>
     </div>
   </header>
 
-  <!-- Anchor feature: Scenario Studio -->
-  <section id="scenario-studio" class="fx fx--anchor" aria-labelledby="scenario-studio-title">
+  <!-- SCENARIO STUDIO: the anchor feature, two live sheets -->
+  <section id="scenario-studio" class="f-sec f-sec--anchor" aria-labelledby="scenario-studio-title">
     <div class="container">
-      <div class="fx-anchor__intro">
+      <div class="f-anchor__intro">
         <div>
           <h2 id="scenario-studio-title">Scenario Studio</h2>
-          <p class="fx__question">What does this change do to my portfolio, compared with doing nothing?</p>
+          <p class="f-q">What does this change do to my portfolio, compared with doing nothing?</p>
         </div>
         <div>
-          <p class="fx__lede">
+          <p class="f-lede">
             Test a refinance, a rate rise or a rent cut before you act. Each scenario starts from “do nothing”,
             rebuilt from your live data, and answers in one sentence: how much better or worse off you would be.
           </p>
-          <ul class="fx__list">
+          <ul class="b-panel__list f-list">
             <li><strong>Rate and repayment stress.</strong> A rate path or a switch from interest-only to principal and interest, your worst year, and the rate rise your portfolio can absorb.</li>
             <li><strong>Refinance comparison.</strong> One loan against a proposed loan: the net benefit after fees, break costs and cashback, and when it breaks even.</li>
             <li><strong>Cash runway.</strong> Rent cuts, cost rises and vacancy, month by month, and the first month your cash drops below your buffer.</li>
@@ -143,96 +141,299 @@ const jsonLd = {
           </ul>
         </div>
       </div>
-      <div class="fx-anchor__media">
-        <figure>
-          <picture>
-          <source media="(max-width: 640px)" srcset="/assets/screens/scenario-mobile.webp" width="390" height="620" />
-          <img class="shot" src="/assets/screens/scenario-studio.webp" width="1130" height="705" loading="lazy" decoding="async"
-            alt="Scenario Studio with sample data, testing a refinance of one loan. The answer reads: over 10 years this plan leaves you $2,930 better off in equity and $1,086 a year on average better off in cash flow than doing nothing." />
-          </picture>
-          <figcaption>Refinance one loan, compared with doing nothing.</figcaption>
-        </figure>
-        <figure>
-          <img class="shot" src="/assets/screens/scenario-stress.webp" width="785" height="420" loading="lazy" decoding="async"
-            alt="The Stress tab of Scenario Studio with sample data: the portfolio can absorb a rate rise of 8% before yearly cash flow goes below zero. Worst-year cash flow ranges from $59,743 with a 1% rate cut to $36,102 with a 3% rise." />
-          <figcaption>The Stress tab: worst-year cash flow at each rate change.</figcaption>
-        </figure>
+
+      <div class="f-anchor__sheets">
+        <div class="b-sheet b-mock" data-anim>
+          <div class="b-sheet__tab">Refinance one loan</div>
+          <p class="b-mock__answer">Over 10 years this plan leaves you <mark>$2,930 better off</mark> in equity and <mark>$1,086 a year</mark> on average better off in cash flow than doing nothing.</p>
+          <div class="b-kpis b-kpis--3">
+            <div class="b-kpi"><span class="b-kpi__label">Equity in 10 years<sup class="b-fn">1</sup></span><span class="b-kpi__value" data-count="4569594" data-fmt="money">$4,569,594</span><span class="b-kpi__sub b-good">+$2,930 better</span></div>
+            <div class="b-kpi"><span class="b-kpi__label">Out of pocket, 10 yrs<sup class="b-fn">2</sup></span><span class="b-kpi__value" data-count="693761" data-fmt="money">$693,761</span><span class="b-kpi__sub b-good">+$10,857 better</span></div>
+            <div class="b-kpi"><span class="b-kpi__label">Worst year<sup class="b-fn">3</sup></span><span class="b-kpi__value" data-count="54971" data-fmt="money">$54,971</span><span class="b-kpi__sub b-good">year 2 · +$1,010 better</span></div>
+          </div>
+          <div class="b-line">
+            <p class="b-mini-title">Equity, year by year <span>The axis does not start at $0. The two lines almost meet: the gap is $2,930.</span></p>
+            <svg viewBox="0 0 460 130" class="b-line__svg" aria-hidden="true">
+              <line x1="60" y1="26" x2="390" y2="26" class="b-grid-line" /><text x="52" y="30" class="b-axis">$4.5m</text>
+              <line x1="60" y1="66" x2="390" y2="66" class="b-grid-line" /><text x="52" y="70" class="b-axis">$3.5m</text>
+              <line x1="60" y1="106" x2="390" y2="106" class="b-grid-line" /><text x="52" y="110" class="b-axis">$2.5m</text>
+              <path class="b-line__plan" pathLength="1" d="M60,91.2 L97,85.1 L133,78.7 L170,71.9 L207,64.8 L243,57.3 L280,49.5 L317,41.2 L353,32.4 L390,23.2" />
+              <path class="b-line__base" d="M60,91.2 L97,85.1 L133,78.7 L170,71.9 L207,64.8 L243,57.3 L280,49.5 L317,41.2 L353,32.4 L390,23.3" />
+              <text x="398" y="20.2" class="b-end b-end--plan">$4.57m</text>
+              <text x="398" y="40" class="b-end b-end--base">$4.57m</text>
+            </svg>
+            <div class="b-line__legend"><span class="b-key b-key--plan">Scenario</span><span class="b-key b-key--base">Do nothing</span><span class="b-num">Yr 1 → Yr 10</span></div>
+          </div>
+          <details class="b-calc f-notes">
+            <summary>How are these worked out?</summary>
+            <ol>
+              <li>Property value minus loan balances at the end of year 10, with this plan.</li>
+              <li>Total net cash flow over the 10 years.</li>
+              <li>The year with the lowest net cash flow.</li>
+            </ol>
+            <p>“Better” compares each figure with doing nothing, rebuilt from the same data.</p>
+          </details>
+        </div>
+
+        <div class="b-sheet b-stresscard f-stress" data-anim data-stress>
+          <div class="b-sheet__tab">Stress · drag the rate</div>
+          <div class="b-stresscard__read">
+            <div>
+              <span class="b-kpi__label" id="stress-rate-label">Rate change</span>
+              <output class="b-stresscard__rate" data-stress-rate for="stress-range">0%</output>
+            </div>
+            <div>
+              <span class="b-kpi__label">Worst-year cash flow</span>
+              <output class="b-stresscard__cash" data-stress-cash for="stress-range">$54,971</output>
+              <span class="b-stresscard__delta" data-stress-delta>Today’s rates</span>
+            </div>
+          </div>
+          <div class="b-chart" aria-hidden="true">
+            <div class="b-chart__plot">
+              <div class="b-chart__col" data-i="0"><i style="--h:.9957"></i><span>−1%</span></div>
+              <div class="b-chart__col is-on" data-i="1"><i style="--h:.9162"></i><span>0%</span></div>
+              <div class="b-chart__col" data-i="2"><i style="--h:.8140"></i><span>+1%</span></div>
+              <div class="b-chart__col" data-i="3"><i style="--h:.7091"></i><span>+2%</span></div>
+              <div class="b-chart__col" data-i="4"><i style="--h:.6017"></i><span>+3%</span></div>
+              <div class="b-chart__break"><span>⋯</span></div>
+              <div class="b-chart__zero"><b>cash flow hits $0</b><span>+8.00%</span></div>
+            </div>
+            <div class="b-chart__base"></div>
+          </div>
+          <label class="b-range">
+            <span class="b-sr">Rate change, from minus 1% to plus 3%</span>
+            <input type="range" id="stress-range" min="-1" max="3" step="1" value="0" data-stress-input
+              aria-labelledby="stress-rate-label" aria-valuetext="0%, worst-year cash flow $54,971" />
+          </label>
+          <p class="b-stresscard__verdict">This demo portfolio can absorb a rate rise of <strong>+8.00%</strong> before
+            yearly cash flow goes below zero.</p>
+          <p class="b-fine">Demo data. On your own repayments, with every loan’s rate raised from year 1.</p>
+          <details class="b-calc f-notes">
+            <summary>How is +8.00% worked out?</summary>
+            <p>Every loan’s rate is raised by the same amount from year 1. +8.00% is the smallest rise at which the worst year’s cash flow goes below $0.</p>
+          </details>
+          <div class="b-stamp" aria-hidden="true"><span>Tested</span><small>against doing nothing</small></div>
+        </div>
       </div>
     </div>
   </section>
 
-  {
-    features.map((f, i) => (
-      <section id={f.id} class:list={['fx', { 'fx--flip': i % 2 === 1 }]} aria-labelledby={`${f.id}-title`}>
-        <div class="container fx__inner">
-          <div class="fx__text">
-            <h2 id={`${f.id}-title`}>{f.name}</h2>
-            <p class="fx__question">{f.question}</p>
-            <p class="fx__lede">{f.lede}</p>
-            <ul class="fx__list">
-              {f.points.map((p) => <li>{p}</li>)}
+  <!-- PORTFOLIO HEALTH -->
+  <section id="portfolio-health" class="f-sec" aria-labelledby="portfolio-health-title">
+    <div class="container f-sec__grid">
+      <div class="f-sec__text">
+        <h2 id="portfolio-health-title">Portfolio health</h2>
+        <p class="f-q">How is my portfolio really doing this year?</p>
+        <p class="f-lede">{features.health.lede}</p>
+        <ul class="b-panel__list f-list">{features.health.points.map((p) => <li>{p}</li>)}</ul>
+      </div>
+      <div class="b-sheet b-mock" data-anim>
+        <div class="b-sheet__tab">Portfolio health · FY2026–27</div>
+        <p class="b-mock__answer">Your portfolio pays you <mark>$1,040 a month</mark> this year. Debt is 22% of value,
+          with $2,034,566 of headroom before the 80% line. 4 of 5 properties are tenanted.</p>
+        <div class="b-kpis b-kpis--3">
+          <div class="b-kpi"><span class="b-kpi__label">Net equity<sup class="b-fn">2</sup></span><span class="b-kpi__value" data-count="2731983" data-fmt="money">$2,731,983</span><span class="b-kpi__sub">$755,105 debt</span></div>
+          <div class="b-kpi"><span class="b-kpi__label">Portfolio value<sup class="b-fn">3</sup></span><span class="b-kpi__value" data-count="3487088" data-fmt="money">$3,487,088</span><span class="b-kpi__sub b-good">+$537,088 vs purchase</span></div>
+          <div class="b-kpi"><span class="b-kpi__label">Gross yield<sup class="b-fn">4</sup></span><span class="b-kpi__value" data-count="3.6" data-fmt="pct1">3.6%</span><span class="b-kpi__sub">Net 1.9%</span></div>
+          <div class="b-kpi"><span class="b-kpi__label">Occupancy<sup class="b-fn">5</sup></span><span class="b-kpi__value" data-count="80" data-fmt="pct1">80.0%</span><span class="b-kpi__sub">4/5 tenanted</span></div>
+          <div class="b-kpi"><span class="b-kpi__label">Data complete<sup class="b-fn">6</sup></span><span class="b-kpi__value" data-count="76" data-fmt="pct0">76%</span><span class="b-kpi__sub">Missing: 1 valuation, 1 tenancy, 5 documents</span></div>
+          <div class="b-kpi b-kpi--good"><span class="b-kpi__label">Net cash flow / mo<sup class="b-fn">1</sup></span><span class="b-kpi__value" data-count="1040" data-fmt="money">$1,040</span><span class="b-kpi__sub">FY to date · 5 months</span></div>
+        </div>
+        <div class="f-headroom">
+          <p class="b-mini-title">Debt against value <span>21.6% now · the line marks 80%</span></p>
+          <div class="b-bar f-headroom__bar" aria-hidden="true"><i style="--v:.216"></i><b style="--at:.8"></b></div>
+          <p class="f-headroom__note"><span class="b-num">$2,034,566</span> of headroom before the 80% line</p>
+        </div>
+        <div class="b-cols">
+          <p class="b-mini-title">Net cash flow by year <span>FY2014–15 → FY2025–26</span></p>
+          <div class="b-cols__plot" aria-hidden="true">
+            <i style="--h:.19"></i><i style="--h:.41"></i><i style="--h:.45"></i><i style="--h:.39"></i><i style="--h:.64"></i><i style="--h:.96"></i><i style="--h:.94"></i><i style="--h:.85"></i><i style="--h:.73"></i><i style="--h:.55"></i><i style="--h:.59"></i><i style="--h:1"></i>
+          </div>
+        </div>
+        <details class="b-calc f-notes">
+          <summary>How are these worked out?</summary>
+          <ol>
+            <li>Rent in, minus loan repayments and property costs, for FY2026–27 to date (5 months), shown as a monthly average.</li>
+            <li>Portfolio value minus debt: $3,487,088 − $755,105.</li>
+            <li>The sum of each property’s latest value. The gain compares it with what was paid.</li>
+            <li>A year’s rent as a share of value. Net yield takes off property costs first.</li>
+            <li>Tenanted properties out of all properties.</li>
+            <li>How much of each property’s record is filled in. Missing items show as “not recorded”.</li>
+          </ol>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROPERTY 360 + DOCUMENT IMPORT -->
+  <section id="property-360" class="f-sec f-sec--flip f-sec--board" aria-labelledby="property-360-title">
+    <div class="container f-sec__grid">
+      <div class="f-sec__text">
+        <h2 id="property-360-title">Property 360 and document import</h2>
+        <p class="f-q">What do I actually know about this property?</p>
+        <p class="f-lede">{features.p360.lede}</p>
+        <ul class="b-panel__list f-list">{features.p360.points.map((p) => <li>{p}</li>)}</ul>
+      </div>
+      <div class="f-stack">
+        <div class="b-sheet b-mock" data-anim>
+          <div class="b-sheet__tab">7 Placeholder Lane</div>
+          <p class="b-mock__title">Demo Townhouse <span class="b-chip">Tenanted</span></p>
+          <div class="b-kpis b-kpis--3">
+            <div class="b-kpi"><span class="b-kpi__label">Current value</span><span class="b-kpi__value" data-count="735000" data-fmt="money">$735,000</span></div>
+            <div class="b-kpi"><span class="b-kpi__label">Net equity</span><span class="b-kpi__value" data-count="593908" data-fmt="money">$593,908</span></div>
+            <div class="b-kpi"><span class="b-kpi__label">Available equity</span><span class="b-kpi__value" data-count="446908" data-fmt="money">$446,908</span></div>
+          </div>
+          <div class="b-p360">
+            <div class="b-p360__row"><span>LVR</span><span class="b-bar b-bar--lvr" aria-hidden="true"><i style="--v:.192"></i><b style="--at:.8"></b></span><span class="b-num">19.2%</span></div>
+            <div class="b-p360__row"><span>Weekly rent</span><span class="b-num b-num--lg">$640</span></div>
+            <ul class="b-p360__tabs">
+              <li>Loans</li><li>Valuations</li><li>Tenancy</li><li>Finance</li><li>Tax</li><li>Documents</li><li>Owners</li>
             </ul>
           </div>
-          <figure class="fx__media">
-            <picture>
-              {f.phone && <source media="(max-width: 640px)" srcset={f.phone} width="390" height="620" />}
-              <img class="shot" src={f.image.src} width={f.image.w} height={f.image.h} alt={f.alt} loading="lazy" decoding="async" />
-            </picture>
-          </figure>
+          <details class="b-calc f-notes">
+            <summary>How are these worked out?</summary>
+            <p>Net equity is value minus loans ($735,000 − $141,092). LVR is loans as a share of value (19.2%).
+              Available equity is 80% of value minus loans: what is left before the 80% line.</p>
+          </details>
         </div>
-      </section>
-    ))
-  }
-
-  <section class="how section" aria-labelledby="numbers-title">
-    <div class="container">
-      <div class="section-head">
-        <h2 id="numbers-title">How Brikfolio treats your numbers</h2>
-      </div>
-      <div class="grid grid-4 steps">
-        <div class="step">
-          <div class="step__title">Every figure has a source</div>
-          <p>Each number links to a note that says where it came from and how it was worked out.</p>
-        </div>
-        <div class="step">
-          <div class="step__title">Gaps stay visible</div>
-          <p>If something is missing, Brikfolio says “not recorded”. It does not show a confident $0.</p>
-        </div>
-        <div class="step">
-          <div class="step__title">Estimates are labelled</div>
-          <p>Scenarios and tax packs are planning estimates, not lender approval or a taxable figure.</p>
-        </div>
-        <div class="step step--accent">
-          <div class="step__title">You and your advisers decide</div>
-          <p>Brikfolio works alongside your accountant and broker. It is not financial advice.</p>
+        <div class="b-sheet f-import" data-anim>
+          <div class="b-sheet__tab">Import · review before saving</div>
+          <ul class="f-import__list">
+            <li><span class="f-doc">Settlement statement</span><span class="f-mark f-mark--done">Read · lines checked</span></li>
+            <li><span class="f-doc">Property-manager statement</span><span class="f-mark f-mark--done">Read · lines checked</span></li>
+            <li><span class="f-doc">Depreciation schedule</span><span class="f-mark">Read · check each line</span></li>
+            <li><span class="f-doc">Tenancy contract</span><span class="b-tag">not recorded</span></li>
+          </ul>
+          <p class="b-fine f-import__note">Nothing is saved until you check it. Importing again replaces the old import.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="coming-later" class="section later" aria-labelledby="later-title">
-    <div class="container">
-      <div class="section-head">
-        <h2 id="later-title">Coming later</h2>
-        <p>These are on our roadmap but not in the product yet. Plans can change.</p>
+  <!-- TAX PACK -->
+  <section id="tax-pack" class="f-sec" aria-labelledby="tax-pack-title">
+    <div class="container f-sec__grid">
+      <div class="f-sec__text">
+        <h2 id="tax-pack-title">Tax pack</h2>
+        <p class="f-q">What do I hand my accountant at tax time?</p>
+        <p class="f-lede">{features.tax.lede}</p>
+        <ul class="b-panel__list f-list">{features.tax.points.map((p) => <li>{p}</li>)}</ul>
       </div>
-      <ul class="later__list" role="list">
+      <div class="b-sheet b-mock f-tax" data-anim>
+        <div class="b-sheet__tab">Tax pack · FY2026–27</div>
+        <p class="b-mock__title">Demo Townhouse · 7 Placeholder Lane</p>
+        <ul class="b-receipt">
+          <li><span>Rental income</span><span class="b-num">$8,319.99</span></li>
+          <li><span>Deductible expenses</span><span class="b-num">−$2,176.03</span></li>
+          <li><span>Loan interest <em>estimate</em></span><span class="b-num">−$3,481.84</span></li>
+          <li><span>Depreciation <em>5 of 12 months</em></span><span class="b-num">$0.00</span></li>
+          <li class="b-receipt__total"><span>Rental result <em>estimate</em></span><span class="b-num b-good">+$2,662.12</span></li>
+        </ul>
+        <div class="b-buttons" aria-hidden="true"><span>JSON</span><span>CSV</span><span>Print</span></div>
+        <details class="b-calc f-notes">
+          <summary>How are the estimates worked out?</summary>
+          <p>Loan interest is estimated from the loan records for the year. The rental result is income, minus deductible
+            expenses, loan interest and depreciation. Your accountant works out the taxable figure.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- DATA HEALTH -->
+  <section id="data-health" class="f-sec f-sec--flip" aria-labelledby="data-health-title">
+    <div class="container f-sec__grid">
+      <div class="f-sec__text">
+        <h2 id="data-health-title">Data health</h2>
+        <p class="f-q">What is missing from my numbers?</p>
+        <p class="f-lede">{features.data.lede}</p>
+        <ul class="b-panel__list f-list">{features.data.points.map((p) => <li>{p}</li>)}</ul>
+      </div>
+      <div class="b-sheet b-mock" data-anim role="img"
+        aria-label="Data health screen with demo data: 76% complete, 0 of 5 properties fully complete. A list by property, least complete first. 3 Fiction Court is 50% complete with no current valuation, no tenancy recorded and no document on file. The other four are 83% complete, each with no document on file.">
+        <div class="b-sheet__tab">Data health</div>
+        <p class="b-mock__title"><span class="b-num b-num--lg" data-count="76" data-fmt="pct0">76%</span> complete · 0 of 5 fully complete</p>
+        <ul class="f-work">
+          <li class="f-work__prop">
+            <div class="f-work__head"><span>3 Fiction Court</span><span class="b-num">50%</span></div>
+            <span class="b-bar b-bar--fill"><i style="--v:.5"></i></span>
+            <ul>
+              <li><span>No current valuation</span><span class="b-todo">Add valuation</span></li>
+              <li><span>No tenancy recorded</span><span class="b-todo">Add tenancy</span></li>
+              <li><span>No document on file</span><span class="b-todo">Upload</span></li>
+            </ul>
+          </li>
+          <li class="f-work__prop">
+            <div class="f-work__head"><span>4/88 Sample Avenue</span><span class="b-num">83%</span></div>
+            <span class="b-bar b-bar--fill"><i style="--v:.83"></i></span>
+            <ul><li><span>No document on file</span><span class="b-todo">Upload</span></li></ul>
+          </li>
+          <li class="f-work__prop">
+            <div class="f-work__head"><span>12 Example Street</span><span class="b-num">83%</span></div>
+            <span class="b-bar b-bar--fill"><i style="--v:.83"></i></span>
+            <ul><li><span>No document on file</span><span class="b-todo">Upload</span></li></ul>
+          </li>
+          <li class="f-work__prop f-work__more"><span>+ 2 more properties at 83%</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW BRIKFOLIO TREATS YOUR NUMBERS: the same file of dividers as the home page -->
+  <section class="b-how" aria-labelledby="numbers-title">
+    <div class="container">
+      <h2 class="b-h2" id="numbers-title">How Brikfolio treats your numbers</h2>
+      <div class="b-binder" data-anim>
+        <ol class="b-binder__tabs" aria-hidden="true">
+          <li>Sources</li><li>Gaps</li><li>Estimates</li><li class="is-test">You decide</li>
+        </ol>
+        <ol class="b-binder__sheet">
+          <li>
+            <h3>Every figure has a source</h3>
+            <p>Each number links to a note that says where it came from and how it was worked out.</p>
+          </li>
+          <li>
+            <h3>Gaps stay visible</h3>
+            <p>If something is missing, Brikfolio says “not recorded”. It does not show a confident $0.</p>
+          </li>
+          <li>
+            <h3>Estimates are labelled</h3>
+            <p>Scenarios and tax packs are planning estimates, not lender approval or a taxable figure.</p>
+          </li>
+          <li class="is-test">
+            <h3>You and your advisers decide</h3>
+            <p>Brikfolio works alongside your accountant and broker. It is not financial advice.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMING LATER: slips not yet filed (dashed), never shown as released -->
+  <section id="coming-later" class="f-sec f-later" aria-labelledby="later-title">
+    <div class="container">
+      <h2 class="b-h2" id="later-title">Coming later</h2>
+      <p class="f-later__lede">These are on our roadmap but not in the product yet. Plans can change.</p>
+      <ul class="f-later__list" role="list">
         {
           later.map((l) => (
-            <li class="later__item">
-              <span class="later__name">{l.name}</span>
-              <span class:list={['later__status', { 'later__status--testing': l.status === 'In testing' }]}>{l.status}</span>
-              <p class="later__body">{l.body}</p>
+            <li class="f-slip">
+              <span class="f-slip__name">{l.name}</span>
+              <span class:list={['f-slip__status', { 'is-testing': l.status === 'In testing' }]}>{l.status}</span>
+              <p>{l.body}</p>
             </li>
           ))
         }
       </ul>
+    </div>
+  </section>
 
-      <aside class="post__cta" aria-label="Join the Brikfolio waitlist">
-        <h2>See your own portfolio this way</h2>
-        <p>Join the waitlist to get early access to Brikfolio.</p>
-        <a class="btn btn--primary" href="https://brikfolio.app/joinwishlist" data-cta="features">Join waitlist</a>
-      </aside>
+  <!-- CLOSE -->
+  <section class="b-close">
+    <div class="container b-close__inner">
+      <img class="brand-mark b-close__mark" src="/assets/logo-mark.svg" alt="" width="332" height="355" />
+      <h2>See your own portfolio this way</h2>
+      <p>Join the waitlist and you will be among the first invited when early access opens.</p>
+      <a class="b-btn" href="https://brikfolio.app/joinwishlist" data-cta="features">Join waitlist</a>
     </div>
   </section>
 </Base>

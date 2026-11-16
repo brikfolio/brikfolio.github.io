@@ -151,7 +151,8 @@ input::placeholder {
   font-weight: 600;
 }
 
-.skip-link:focus {
+.skip-link:focus,
+.skip-link:hover {
   top: 12px;
   color: var(--paper);
 }

@@ -91,7 +91,7 @@
           "width": 1200,
           "height": 630
         },
-        "dateModified": "2026-11-09"
+        "dateModified": "2026-11-16"
       },
       {
         "@type": "WebApplication",
@@ -214,6 +214,8 @@
   <!-- Fonts load without blocking first paint; display=swap shows fallback text until they arrive -->
   <!-- Self-hosted fonts (see @font-face in styles.css); preload the body face used by the hero text -->
   <link rel="preload" href="assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/albert-sans-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/ibm-plex-mono-500-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="dns-prefetch" href="https://brikfolio.app">
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -221,6 +223,8 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180">
   <link rel="manifest" href="site.webmanifest">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+  <script>document.documentElement.classList.add('js');</script>
 
   <!-- Analytics: GA4 + Meta Pixel. The queues below record calls straight away; the two
        vendor scripts are only fetched once the page has loaded, so they never delay first paint. -->
@@ -305,229 +309,393 @@
 
   <main id="top">
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container hero__inner">
-        <h1>Test a property decision before you make it</h1>
-        <p class="hero__sub">Brikfolio puts your properties, loans, rent and documents in one place. Then it shows what a
-          refinance, a rate rise or a vacancy would do, next to doing nothing.</p>
-        <div class="hero__cta" id="waitlist">
-          <a class="btn btn--primary" href="https://brikfolio.app/joinwishlist" data-cta="hero">Join waitlist</a>
-          <a class="hero__link" href="features/">See what it does</a>
+    <!-- HERO: loose paperwork lands in one file; the file's top sheet is the app, rebuilt live on demo data -->
+    <section class="b-hero">
+      <div class="container b-hero__grid">
+        <div class="b-hero__copy">
+          <h1>Test a property decision before you make it</h1>
+          <p class="b-hero__sub">Brikfolio puts your properties, loans, rent and documents in one file. Then it shows what a
+            refinance, a rate rise or a vacancy would do, next to doing nothing.</p>
+          <div class="b-hero__cta" id="waitlist">
+            <a class="b-btn" href="https://brikfolio.app/joinwishlist" data-cta="hero">Join waitlist</a>
+            <a class="b-link b-link--on-board" href="features/">See what it does</a>
+          </div>
+          <p class="b-hero__note">Planning estimates, not financial advice. Built to work alongside your accountant and broker.</p>
         </div>
-        <p class="hero__note">Planning estimates, not financial advice. Built to work alongside your accountant and broker.</p>
 
-        <!-- Real product screen (demo data). Source: Brikfolio brain, design-system/screens/dashboard-desktop.png -->
-        <figure class="hero__shot">
-          <picture>
-            <source media="(max-width: 640px)" srcset="assets/screens/dashboard-mobile.webp" width="390" height="522">
-            <img src="assets/screens/dashboard.webp" width="1130" height="650" fetchpriority="high" decoding="async"
-            alt="The Brikfolio portfolio overview with demo data: portfolio value $3,487,088 across 5 properties, gross yield 3.6%, portfolio LVR 21.6% on $755,105 of debt, and cash flow of $1,040 a month. Below are yield and LVR for each property, and the portfolio’s make-up by value.">
-          </picture>
-          <figcaption>The real product, with demo data.</figcaption>
+        <figure class="b-file" data-file>
+          <div class="b-file__back" aria-hidden="true"></div>
+          <nav class="b-file__tabs" aria-label="Inside the file">
+            <a href="#stress">Stress test</a>
+            <a href="#tour">Feature sheets</a>
+            <a href="#pricing">Plans</a>
+          </nav>
+          <div class="b-slip b-slip--1" aria-hidden="true">
+            <span class="b-slip__kind">Settlement <span class="b-slip__more">statement</span></span>
+            <span class="b-slip__meta">7 Placeholder Lane</span>
+          </div>
+          <div class="b-slip b-slip--2" aria-hidden="true">
+            <span class="b-slip__kind">Loan <span class="b-slip__more">statement</span></span>
+            <span class="b-slip__meta">Variable · 3 loans</span>
+          </div>
+          <div class="b-slip b-slip--3" aria-hidden="true">
+            <span class="b-slip__kind">Rental <span class="b-slip__more">statement</span></span>
+            <span class="b-slip__meta">October · PM</span>
+          </div>
+
+          <div class="b-sheet b-dash" data-anim>
+            <div class="b-sheet__tab">Portfolio overview</div>
+            <div class="b-dash__head">
+              <span>Alex Demo · 5 properties</span>
+              <span class="b-chip">FY2026–27</span>
+            </div>
+            <div class="b-kpis">
+              <div class="b-kpi">
+                <span class="b-kpi__label">Portfolio value<sup class="b-fn">1</sup></span>
+                <span class="b-kpi__value" data-count="3487088" data-fmt="money">$3,487,088</span>
+                <span class="b-kpi__sub">5 properties</span>
+              </div>
+              <div class="b-kpi">
+                <span class="b-kpi__label">Gross yield<sup class="b-fn">2</sup></span>
+                <span class="b-kpi__value" data-count="3.6" data-fmt="pct1">3.6%</span>
+                <span class="b-kpi__sub">Across the portfolio</span>
+              </div>
+              <div class="b-kpi">
+                <span class="b-kpi__label">Portfolio LVR<sup class="b-fn">3</sup></span>
+                <span class="b-kpi__value" data-count="21.6" data-fmt="pct1">21.6%</span>
+                <span class="b-kpi__sub">$755,105 debt</span>
+              </div>
+              <div class="b-kpi b-kpi--good">
+                <span class="b-kpi__label">Cash flow / mo<sup class="b-fn">4</sup></span>
+                <span class="b-kpi__value" data-count="1040" data-fmt="money">$1,040</span>
+                <span class="b-kpi__sub">FY2026–27 to date · 5 months</span>
+                <details class="b-calc">
+                  <summary>How is this worked out?</summary>
+                  <p>Rent in, minus loan repayments and property costs, for FY2026–27 to date (5 months), shown as a monthly average. Demo data.</p>
+                </details>
+              </div>
+            </div>
+            <div class="b-dash__body">
+              <div class="b-yield">
+                <p class="b-mini-title">Yield by property <span>0–8% scale · tick = 3.6% average</span></p>
+                <ul class="b-yield__list">
+                  <li><span class="b-yield__name">15/200 Mock Road</span><span class="b-bar" aria-hidden="true"><i style="--v:.5875"></i><b style="--at:.45"></b></span><span class="b-num">4.7%</span></li>
+                  <li><span class="b-yield__name">7 Placeholder Lane</span><span class="b-bar" aria-hidden="true"><i style="--v:.5625"></i><b style="--at:.45"></b></span><span class="b-num">4.5%</span></li>
+                  <li><span class="b-yield__name">4/88 Sample Avenue</span><span class="b-bar" aria-hidden="true"><i style="--v:.5625"></i><b style="--at:.45"></b></span><span class="b-num">4.5%</span></li>
+                  <li><span class="b-yield__name">12 Example Street</span><span class="b-bar" aria-hidden="true"><i style="--v:.45"></i><b style="--at:.45"></b></span><span class="b-num">3.6%</span></li>
+                  <li><span class="b-yield__name">3 Fiction Court</span><span class="b-tag">not recorded</span><span class="b-num">—</span></li>
+                </ul>
+              </div>
+              <div class="b-comp">
+                <p class="b-mini-title">Make-up by value</p>
+                <div class="b-stack" aria-hidden="true">
+                  <i style="--w:26.9"></i><i style="--w:21.5"></i><i style="--w:21.1"></i><i style="--w:16.1"></i><i style="--w:14.5"></i>
+                </div>
+                <ul class="b-comp__list">
+                  <li><span>12 Example Street</span><span class="b-num">26.9%</span></li>
+                  <li><span>4/88 Sample Avenue</span><span class="b-num">21.5%</span></li>
+                  <li><span>7 Placeholder Lane</span><span class="b-num">21.1%</span></li>
+                  <li><span>3 Fiction Court</span><span class="b-num">16.1%</span></li>
+                  <li><span>15/200 Mock Road</span><span class="b-num">14.5%</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <figcaption>The real app, rebuilt here with demo data.</figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- STATS BAR -->
-    <section class="stats" aria-label="Market context">
-      <div class="container stats__inner">
-        <div>
-          <div class="stats__value">2.1M+</div>
-          <div class="stats__label">Australian property investors</div>
+    <!-- PROBLEM: the paper trail. The market figures stay small until their sources arrive. -->
+    <section id="problem" class="b-trail">
+      <div class="container b-trail__grid">
+        <div class="b-trail__copy">
+          <h2>Your portfolio lives in a dozen places. None of them talk.</h2>
+          <p>Bank portals, broker emails, tax records and property manager statements. You reconcile them by hand,
+            and big decisions get made on whatever is in front of you.</p>
         </div>
-        <div>
-          <div class="stats__value">$2.4T</div>
-          <div class="stats__label">investment property asset base</div>
-        </div>
-        <div>
-          <div class="stats__value stats__value--accent">78%</div>
-          <div class="stats__label">still run on spreadsheets</div>
+        <ul class="b-desk" data-anim aria-label="Where property data usually lives">
+          <li style="--x:2%;--y:6%;--r:-5deg">Bank portal <span>3 logins</span></li>
+          <li style="--x:40%;--y:0%;--r:3deg">Broker emails <span>47 unread</span></li>
+          <li style="--x:70%;--y:14%;--r:-2deg">PM statement <span>October</span></li>
+          <li style="--x:8%;--y:38%;--r:4deg">Settlement statement <span>PDF</span></li>
+          <li style="--x:48%;--y:34%;--r:-4deg">Depreciation schedule <span>2019</span></li>
+          <li style="--x:22%;--y:68%;--r:-1deg">portfolio_v14_FINAL.xlsx <span>Spreadsheet</span></li>
+          <li style="--x:62%;--y:64%;--r:5deg">Tax return <span>Last year</span></li>
+        </ul>
+      </div>
+      <div class="container">
+        <dl class="b-ledger">
+          <div><dt>$8K–22K</dt><dd>a year in missed refinance savings, depreciation omissions and CGT mis-timing, per investor</dd></div>
+          <div><dt>3–8 hrs</dt><dd>of manual reconciliation per quarter, per property</dd></div>
+          <div><dt>52%</dt><dd>of investors miss refinance windows because nothing tells them to act</dd></div>
+          <div><dt>2.1M+</dt><dd>Australian property investors</dd></div>
+          <div><dt>$2.4T</dt><dd>investment property asset base</dd></div>
+          <div><dt>78%</dt><dd>still run their portfolio on spreadsheets</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS: four index dividers -->
+    <section id="how" class="b-how">
+      <div class="container">
+        <h2 class="b-h2">From scattered paperwork to a tested decision</h2>
+        <div class="b-binder" data-anim>
+          <ol class="b-binder__tabs" aria-hidden="true">
+            <li>Add</li><li>See</li><li class="is-test">Test</li><li>Share</li>
+          </ol>
+          <ol class="b-binder__sheet">
+            <li>
+              <h3>Add</h3>
+              <p>Enter each property by hand, or upload a settlement statement and let Brikfolio read it. You check every
+                line before it is saved.</p>
+            </li>
+            <li>
+              <h3>See</h3>
+              <p>Value, equity, yield, debt and cash flow across every property, with one plain sentence on what it
+                means.</p>
+            </li>
+            <li class="is-test">
+              <h3>Test</h3>
+              <p>Try a refinance, a rate rise or a vacancy against doing nothing, before you act.</p>
+              <span class="b-stamp b-stamp--sm" aria-hidden="true"><span>Tested</span></span>
+            </li>
+            <li>
+              <h3>Share</h3>
+              <p>Give your accountant a tax pack for each property and year, or a scenario PDF with every assumption and
+                its source.</p>
+            </li>
+          </ol>
         </div>
       </div>
     </section>
 
-    <!-- PROBLEM -->
-    <section id="problem" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>High-value decisions, made on <span class="nowrap">low-quality</span>, disconnected information</h2>
-          <p>Your portfolio lives in bank portals, broker emails, tax records and property manager systems. Nothing
-            talks to anything, and the gap has a real, compounding cost.</p>
+    <!-- SIGNATURE: drag a rate rise and watch the worst year (real Scenario Studio stress figures, demo data) -->
+    <section id="stress" class="b-stress">
+      <div class="container b-stress__grid">
+        <div class="b-stress__copy">
+          <h2>Drag the rate. Watch your worst year.</h2>
+          <p>Scenario Studio rebuilds “doing nothing” from your own numbers, then raises every loan’s rate from year one.
+            You see the worst year your cash flow would have, and how much of a rise you could absorb.</p>
+          <a class="b-link b-link--on-board" href="features/#scenario-studio">More about Scenario Studio</a>
         </div>
-        <div class="grid problem-grid">
-          <div class="card card--lead">
-            <div class="card__stat">$8K–22K</div>
+
+        <div class="b-sheet b-stresscard" data-anim data-stress>
+          <div class="b-sheet__tab">Scenario Studio · Stress</div>
+          <div class="b-stresscard__read">
             <div>
-              <div class="card__title">Annual leakage</div>
-              <p class="card__body">Missed refinance savings, depreciation omissions and CGT mis-timing, every year,
-                per investor.</p>
+              <span class="b-kpi__label" id="stress-rate-label">Rate change</span>
+              <output class="b-stresscard__rate" data-stress-rate for="stress-range">0%</output>
+            </div>
+            <div>
+              <span class="b-kpi__label">Worst-year cash flow</span>
+              <output class="b-stresscard__cash" data-stress-cash for="stress-range">$54,971</output>
+              <span class="b-stresscard__delta" data-stress-delta>Today’s rates</span>
             </div>
           </div>
-          <div class="card">
-            <div class="card__stat">3–8 hrs</div>
-            <div class="card__title">Fragmented data</div>
-            <p class="card__body">Manual reconciliation per quarter, per property. Cash flow, debt and documents live
-              in silos, consolidated nowhere.</p>
-          </div>
-          <div class="card">
-            <div class="card__stat">52%</div>
-            <div class="card__title">Missed windows</div>
-            <p class="card__body">Investors miss refinance windows because no system surfaces “act now” moments, so they
-              react too late.</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- HOW IT WORKS -->
-    <section id="how" class="how section">
-      <div class="container">
-        <div class="section-head">
-          <h2>From scattered paperwork to a tested decision</h2>
-        </div>
-        <div class="grid grid-4 steps">
-          <div class="step">
-            <div class="step__title">Add</div>
-            <p>Enter each property by hand, or upload a settlement statement and let Brikfolio read it. You check every
-              line before it is saved.</p>
+          <div class="b-chart" aria-hidden="true">
+            <div class="b-chart__plot">
+              <div class="b-chart__col" data-i="0"><i style="--h:.9957"></i><span>−1%</span></div>
+              <div class="b-chart__col is-on" data-i="1"><i style="--h:.9162"></i><span>0%</span></div>
+              <div class="b-chart__col" data-i="2"><i style="--h:.8140"></i><span>+1%</span></div>
+              <div class="b-chart__col" data-i="3"><i style="--h:.7091"></i><span>+2%</span></div>
+              <div class="b-chart__col" data-i="4"><i style="--h:.6017"></i><span>+3%</span></div>
+              <div class="b-chart__break"><span>⋯</span></div>
+              <div class="b-chart__zero"><b>cash flow hits $0</b><span>+8.00%</span></div>
+            </div>
+            <div class="b-chart__base"></div>
           </div>
-          <div class="step">
-            <div class="step__title">See</div>
-            <p>Value, equity, yield, debt and cash flow across every property, with one plain sentence on what it
-              means.</p>
-          </div>
-          <div class="step step--accent">
-            <div class="step__title">Test</div>
-            <p>Try a refinance, a rate rise or a vacancy against doing nothing, before you act.</p>
-          </div>
-          <div class="step">
-            <div class="step__title">Share</div>
-            <p>Give your accountant a tax pack for each property and year, or a scenario PDF with every assumption and
-              its source.</p>
-          </div>
+
+          <label class="b-range">
+            <span class="b-sr">Rate change, from minus 1% to plus 3%</span>
+            <input type="range" id="stress-range" min="-1" max="3" step="1" value="0" data-stress-input
+              aria-labelledby="stress-rate-label" aria-valuetext="0%, worst-year cash flow $54,971">
+          </label>
+
+          <p class="b-stresscard__verdict">This demo portfolio can absorb a rate rise of <strong>+8.00%</strong> before
+            yearly cash flow goes below zero.</p>
+          <p class="b-fine">Demo data. On your own repayments, with every loan’s rate raised from year 1.</p>
+          <div class="b-stamp" aria-hidden="true"><span>Tested</span><small>against doing nothing</small></div>
         </div>
       </div>
     </section>
 
     <!-- FEATURES: released features only. Details and "coming later" live on /features/ -->
-    <section id="tour" class="section">
+    <section id="tour" class="b-tour">
       <div class="container">
-        <div class="section-head">
-          <h2>What you can do in Brikfolio today</h2>
-          <p>Screens from the real app, filled with sample properties.</p>
+        <div class="b-head">
+          <h2 class="b-h2">What you can do in Brikfolio today</h2>
+          <p>Every sheet below is the real app, rebuilt on this page with sample properties.</p>
         </div>
 
         <!-- Feature tabs. Without JavaScript every panel shows, stacked; the script turns them into tabs. -->
-        <div class="ftabs" data-ftabs>
-          <div class="ftabs__list" role="tablist" aria-label="Brikfolio features" hidden>
-            <button type="button" class="ftabs__tab" role="tab" id="ftab-scenario-studio" aria-controls="fpanel-scenario-studio" aria-selected="true">Scenario Studio</button>
-            <button type="button" class="ftabs__tab" role="tab" id="ftab-portfolio-health" aria-controls="fpanel-portfolio-health" aria-selected="false" tabindex="-1">Portfolio health</button>
-            <button type="button" class="ftabs__tab" role="tab" id="ftab-property-360" aria-controls="fpanel-property-360" aria-selected="false" tabindex="-1">Property 360</button>
-            <button type="button" class="ftabs__tab" role="tab" id="ftab-tax-pack" aria-controls="fpanel-tax-pack" aria-selected="false" tabindex="-1">Tax pack</button>
-            <button type="button" class="ftabs__tab" role="tab" id="ftab-data-health" aria-controls="fpanel-data-health" aria-selected="false" tabindex="-1">Data health</button>
+        <div class="ftabs b-ftabs" data-ftabs>
+          <div class="b-ftabs__list" role="tablist" aria-label="Brikfolio features" hidden>
+            <button type="button" class="b-ftabs__tab" role="tab" id="ftab-scenario-studio" aria-controls="fpanel-scenario-studio" aria-selected="true">Scenario Studio</button>
+            <button type="button" class="b-ftabs__tab" role="tab" id="ftab-portfolio-health" aria-controls="fpanel-portfolio-health" aria-selected="false" tabindex="-1">Portfolio health</button>
+            <button type="button" class="b-ftabs__tab" role="tab" id="ftab-property-360" aria-controls="fpanel-property-360" aria-selected="false" tabindex="-1">Property 360</button>
+            <button type="button" class="b-ftabs__tab" role="tab" id="ftab-tax-pack" aria-controls="fpanel-tax-pack" aria-selected="false" tabindex="-1">Tax pack</button>
+            <button type="button" class="b-ftabs__tab" role="tab" id="ftab-data-health" aria-controls="fpanel-data-health" aria-selected="false" tabindex="-1">Data health</button>
           </div>
-        <div class="showcase ftabs__panel" role="tabpanel" id="fpanel-scenario-studio" aria-labelledby="ftab-scenario-studio">
-          <div class="showcase__text">
-            <h3>Scenario Studio</h3>
-            <p class="showcase__question">What does this change do to my portfolio, compared with doing nothing?</p>
-            <ul class="showcase__list">
-              <li>Stress your loans with a rate rise, and see your worst year.</li>
-              <li>Compare a refinance after fees, break costs and cashback.</li>
-              <li>See how long your cash lasts if rent drops or a property sits vacant.</li>
-            </ul>
-            <a class="showcase__more" href="features/#scenario-studio">More about Scenario Studio</a>
+
+          <div class="b-panel" role="tabpanel" id="fpanel-scenario-studio" aria-labelledby="ftab-scenario-studio">
+            <div class="b-panel__text">
+              <h3>Scenario Studio</h3>
+              <p class="b-panel__q">What does this change do to my portfolio, compared with doing nothing?</p>
+              <ul class="b-panel__list">
+                <li>Stress your loans with a rate rise, and see your worst year.</li>
+                <li>Compare a refinance after fees, break costs and cashback.</li>
+                <li>See how long your cash lasts if rent drops or a property sits vacant.</li>
+              </ul>
+              <a class="b-link" href="features/#scenario-studio">More about Scenario Studio</a>
+            </div>
+            <div class="b-sheet b-mock" data-anim role="img"
+              aria-label="Scenario Studio with sample data, testing a refinance of one loan. The answer reads: over 10 years this plan leaves you $2,930 better off in equity and $1,086 a year on average better off in cash flow than doing nothing.">
+              <div class="b-sheet__tab">Refinance one loan</div>
+              <p class="b-mock__answer">Over 10 years this plan leaves you <mark>$2,930 better off</mark> in equity and
+                <mark>$1,086 a year</mark> on average better off in cash flow than doing nothing.</p>
+              <div class="b-kpis b-kpis--3">
+                <div class="b-kpi"><span class="b-kpi__label">Equity in 10 years<sup class="b-fn">1</sup></span><span class="b-kpi__value" data-count="4569594" data-fmt="money">$4,569,594</span><span class="b-kpi__sub b-good">+$2,930 better</span></div>
+                <div class="b-kpi"><span class="b-kpi__label">Out of pocket, 10 yrs<sup class="b-fn">2</sup></span><span class="b-kpi__value" data-count="693761" data-fmt="money">$693,761</span><span class="b-kpi__sub b-good">+$10,857 better</span></div>
+                <div class="b-kpi"><span class="b-kpi__label">Worst year<sup class="b-fn">3</sup></span><span class="b-kpi__value" data-count="54971" data-fmt="money">$54,971</span><span class="b-kpi__sub b-good">year 2 · +$1,010 better</span></div>
+              </div>
+              <div class="b-line">
+                <p class="b-mini-title">Equity, year by year <span>The axis does not start at $0. The two lines almost meet: the gap is $2,930.</span></p>
+                <svg viewBox="0 0 460 130" class="b-line__svg">
+                  <line x1="60" y1="26" x2="390" y2="26" class="b-grid-line" /><text x="52" y="30" class="b-axis">$4.5m</text>
+                  <line x1="60" y1="66" x2="390" y2="66" class="b-grid-line" /><text x="52" y="70" class="b-axis">$3.5m</text>
+                  <line x1="60" y1="106" x2="390" y2="106" class="b-grid-line" /><text x="52" y="110" class="b-axis">$2.5m</text>
+                  <path class="b-line__plan" pathLength="1" d="M60,91.2 L97,85.1 L133,78.7 L170,71.9 L207,64.8 L243,57.3 L280,49.5 L317,41.2 L353,32.4 L390,23.2" />
+                  <path class="b-line__base" d="M60,91.2 L97,85.1 L133,78.7 L170,71.9 L207,64.8 L243,57.3 L280,49.5 L317,41.2 L353,32.4 L390,23.3" />
+                  <text x="398" y="20.2" class="b-end b-end--plan">$4.57m</text>
+                  <text x="398" y="40" class="b-end b-end--base">$4.57m</text>
+                </svg>
+                <div class="b-line__legend"><span class="b-key b-key--plan">Scenario</span><span class="b-key b-key--base">Do nothing</span><span class="b-num">Yr 1 → Yr 10</span></div>
+              </div>
+            </div>
           </div>
-          <figure class="showcase__media">
-            <picture>
-              <source media="(max-width: 640px)" srcset="assets/screens/scenario-mobile.webp" width="390" height="620">
-              <img class="shot" src="assets/screens/scenario-answer.webp" width="787" height="580" loading="lazy" decoding="async"
-              alt="Scenario Studio with sample data, testing a refinance of one loan. The answer reads: over 10 years this plan leaves you $2,930 better off in equity and $1,086 a year on average better off in cash flow than doing nothing.">
-            </picture>
-          </figure>
-        </div>
-        <div class="showcase ftabs__panel" role="tabpanel" id="fpanel-portfolio-health" aria-labelledby="ftab-portfolio-health">
-          <div class="showcase__text">
-            <h3>Portfolio health</h3>
-            <p class="showcase__question">How is my portfolio really doing this year?</p>
-            <ul class="showcase__list">
-              <li>One plain sentence that sums up your year.</li>
-              <li>Net cash flow for each financial year.</li>
-              <li>Debt against value, and the headroom before the 80% line.</li>
-            </ul>
-            <a class="showcase__more" href="features/#portfolio-health">More about Portfolio health</a>
+
+          <div class="b-panel" role="tabpanel" id="fpanel-portfolio-health" aria-labelledby="ftab-portfolio-health">
+            <div class="b-panel__text">
+              <h3>Portfolio health</h3>
+              <p class="b-panel__q">How is my portfolio really doing this year?</p>
+              <ul class="b-panel__list">
+                <li>One plain sentence that sums up your year.</li>
+                <li>Net cash flow for each financial year.</li>
+                <li>Debt against value, and the headroom before the 80% line.</li>
+              </ul>
+              <a class="b-link" href="features/#portfolio-health">More about Portfolio health</a>
+            </div>
+            <div class="b-sheet b-mock" data-anim role="img"
+              aria-label="Portfolio health with sample data. The summary reads: your portfolio pays you $1,040 a month this year; debt is 22% of value, with $2,034,566 of headroom before the 80% line; 4 of 5 properties are tenanted.">
+              <div class="b-sheet__tab">Portfolio health</div>
+              <p class="b-mock__answer">Your portfolio pays you <mark>$1,040 a month</mark> this year. Debt is 22% of value,
+                with $2,034,566 of headroom before the 80% line. 4 of 5 properties are tenanted.</p>
+              <div class="b-kpis b-kpis--3">
+                <div class="b-kpi"><span class="b-kpi__label">Net equity</span><span class="b-kpi__value" data-count="2731983" data-fmt="money">$2,731,983</span><span class="b-kpi__sub">$755,105 debt</span></div>
+                <div class="b-kpi"><span class="b-kpi__label">Occupancy</span><span class="b-kpi__value" data-count="80" data-fmt="pct1">80.0%</span><span class="b-kpi__sub">4/5 tenanted</span></div>
+                <div class="b-kpi"><span class="b-kpi__label">Data complete</span><span class="b-kpi__value" data-count="76" data-fmt="pct0">76%</span><span class="b-kpi__sub">1 valuation missing</span></div>
+              </div>
+              <div class="b-cols">
+                <p class="b-mini-title">Net cash flow by year <span>FY2014–15 → FY2025–26</span></p>
+                <div class="b-cols__plot">
+                  <i style="--h:.19"></i><i style="--h:.41"></i><i style="--h:.45"></i><i style="--h:.39"></i><i style="--h:.64"></i><i style="--h:.96"></i><i style="--h:.94"></i><i style="--h:.85"></i><i style="--h:.73"></i><i style="--h:.55"></i><i style="--h:.59"></i><i style="--h:1"></i>
+                </div>
+              </div>
+            </div>
           </div>
-          <figure class="showcase__media">
-            <picture>
-              <source media="(max-width: 640px)" srcset="assets/screens/portfolio-health-mobile.webp" width="390" height="620">
-              <img class="shot" src="assets/screens/tab-portfolio-health.webp" width="1000" height="737" loading="lazy" decoding="async"
-              alt="Portfolio health with sample data. The summary reads: your portfolio pays you $1,040 a month this year; debt is 22% of value, with $2,034,566 of headroom before the 80% line; 4 of 5 properties are tenanted.">
-            </picture>
-          </figure>
-        </div>
-        <div class="showcase ftabs__panel" role="tabpanel" id="fpanel-property-360" aria-labelledby="ftab-property-360">
-          <div class="showcase__text">
-            <h3>Property 360</h3>
-            <p class="showcase__question">What do I actually know about this property?</p>
-            <ul class="showcase__list">
-              <li>Value, equity, loans, tenancy, tax and documents in one record.</li>
-              <li>Upload a statement and Brikfolio reads it for you.</li>
-              <li>You check every line before it is saved.</li>
-            </ul>
-            <a class="showcase__more" href="features/#property-360">More about Property 360</a>
+
+          <div class="b-panel" role="tabpanel" id="fpanel-property-360" aria-labelledby="ftab-property-360">
+            <div class="b-panel__text">
+              <h3>Property 360</h3>
+              <p class="b-panel__q">What do I actually know about this property?</p>
+              <ul class="b-panel__list">
+                <li>Value, equity, loans, tenancy, tax and documents in one record.</li>
+                <li>Upload a statement and Brikfolio reads it for you.</li>
+                <li>You check every line before it is saved.</li>
+              </ul>
+              <a class="b-link" href="features/#property-360">More about Property 360</a>
+            </div>
+            <div class="b-sheet b-mock" data-anim role="img"
+              aria-label="Property 360 for a sample townhouse: current value $735,000, net equity $593,908, available equity $446,908, LVR 19.2% and weekly rent $640, with tabs for loans, valuations, tenancy, finance, tax, documents and owners.">
+              <div class="b-sheet__tab">7 Placeholder Lane</div>
+              <p class="b-mock__title">Demo Townhouse <span class="b-chip">Tenanted</span></p>
+              <div class="b-kpis b-kpis--3">
+                <div class="b-kpi"><span class="b-kpi__label">Current value</span><span class="b-kpi__value" data-count="735000" data-fmt="money">$735,000</span></div>
+                <div class="b-kpi"><span class="b-kpi__label">Net equity</span><span class="b-kpi__value" data-count="593908" data-fmt="money">$593,908</span></div>
+                <div class="b-kpi"><span class="b-kpi__label">Available equity</span><span class="b-kpi__value" data-count="446908" data-fmt="money">$446,908</span></div>
+              </div>
+              <div class="b-p360">
+                <div class="b-p360__row"><span>LVR</span><span class="b-bar b-bar--lvr"><i style="--v:.24"></i><b style="--at:1"></b></span><span class="b-num">19.2%</span></div>
+                <div class="b-p360__row"><span>Weekly rent</span><span class="b-num b-num--lg">$640</span></div>
+                <ul class="b-p360__tabs">
+                  <li>Loans</li><li>Valuations</li><li>Tenancy</li><li>Finance</li><li>Tax</li><li>Documents</li><li>Owners</li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <figure class="showcase__media">
-            <picture>
-              <source media="(max-width: 640px)" srcset="assets/screens/property-360-mobile.webp" width="390" height="620">
-              <img class="shot" src="assets/screens/tab-property-360.webp" width="765" height="564" loading="lazy" decoding="async"
-              alt="Property 360 for a sample townhouse: current value $735,000, net equity $593,908, available equity $446,908, LVR 19.2% and weekly rent $640, with tabs for loans, valuations, tenancy, finance, tax, documents and owners.">
-            </picture>
-          </figure>
-        </div>
-        <div class="showcase ftabs__panel" role="tabpanel" id="fpanel-tax-pack" aria-labelledby="ftab-tax-pack">
-          <div class="showcase__text">
-            <h3>Tax pack</h3>
-            <p class="showcase__question">What do I hand my accountant at tax time?</p>
-            <ul class="showcase__list">
-              <li>Income, expenses, interest and depreciation for each property and year.</li>
-              <li>Print it, or download it as CSV or JSON.</li>
-              <li>Every estimate says how it was worked out.</li>
-            </ul>
-            <a class="showcase__more" href="features/#tax-pack">More about Tax pack</a>
+
+          <div class="b-panel" role="tabpanel" id="fpanel-tax-pack" aria-labelledby="ftab-tax-pack">
+            <div class="b-panel__text">
+              <h3>Tax pack</h3>
+              <p class="b-panel__q">What do I hand my accountant at tax time?</p>
+              <ul class="b-panel__list">
+                <li>Income, expenses, interest and depreciation for each property and year.</li>
+                <li>Print it, or download it as CSV or JSON.</li>
+                <li>Every estimate says how it was worked out.</li>
+              </ul>
+              <a class="b-link" href="features/#tax-pack">More about Tax pack</a>
+            </div>
+            <div class="b-sheet b-mock" data-anim role="img"
+              aria-label="Tax pack for a sample townhouse, financial year 2026–27: rental income $8,319.99, deductible expenses $2,176.03, estimated loan interest $3,481.84 and an estimated rental result of +$2,662.12. Buttons to download JSON or CSV, or print.">
+              <div class="b-sheet__tab">Tax pack · FY2026–27</div>
+              <p class="b-mock__title">Demo Townhouse · 7 Placeholder Lane</p>
+              <ul class="b-receipt">
+                <li><span>Rental income</span><span class="b-num">$8,319.99</span></li>
+                <li><span>Deductible expenses</span><span class="b-num">−$2,176.03</span></li>
+                <li><span>Loan interest <em>estimate</em></span><span class="b-num">−$3,481.84</span></li>
+                <li class="b-receipt__total"><span>Rental result <em>estimate</em></span><span class="b-num b-good">+$2,662.12</span></li>
+              </ul>
+              <div class="b-buttons"><span>JSON</span><span>CSV</span><span>Print</span></div>
+            </div>
           </div>
-          <figure class="showcase__media">
-            <img class="shot" src="assets/screens/tab-tax-pack.webp" width="750" height="553" loading="lazy" decoding="async"
-              alt="Tax pack for a sample townhouse, financial year 2026–27: rental income $8,319.99, deductible expenses $2,176.03, estimated loan interest $3,481.84 and an estimated rental result of +$2,662.12. Buttons to download JSON or CSV, or print.">
-          </figure>
-        </div>
-        <div class="showcase ftabs__panel" role="tabpanel" id="fpanel-data-health" aria-labelledby="ftab-data-health">
-          <div class="showcase__text">
-            <h3>Data health</h3>
-            <p class="showcase__question">What is missing from my numbers?</p>
-            <ul class="showcase__list">
-              <li>A worklist of gaps, least complete property first.</li>
-              <li>Each gap links straight to its fix.</li>
-              <li>Missing data shows as “not recorded”, never as $0.</li>
-            </ul>
-            <a class="showcase__more" href="features/#data-health">More about Data health</a>
+
+          <div class="b-panel" role="tabpanel" id="fpanel-data-health" aria-labelledby="ftab-data-health">
+            <div class="b-panel__text">
+              <h3>Data health</h3>
+              <p class="b-panel__q">What is missing from my numbers?</p>
+              <ul class="b-panel__list">
+                <li>A worklist of gaps, least complete property first.</li>
+                <li>Each gap links straight to its fix.</li>
+                <li>Missing data shows as “not recorded”, never as $0.</li>
+              </ul>
+              <a class="b-link" href="features/#data-health">More about Data health</a>
+            </div>
+            <div class="b-sheet b-mock" data-anim role="img"
+              aria-label="Data health with sample data: 76% complete. A list by property, least complete first, with buttons such as Add valuation, Add tenancy and Upload.">
+              <div class="b-sheet__tab">Data health</div>
+              <p class="b-mock__title"><span class="b-num b-num--lg" data-count="76" data-fmt="pct0">76%</span> complete · least complete first</p>
+              <ul class="b-health">
+                <li><span>3 Fiction Court</span><span class="b-bar b-bar--fill"><i style="--v:.5"></i></span><span class="b-num">50%</span><span class="b-todo">Add valuation</span></li>
+                <li><span>4/88 Sample Avenue</span><span class="b-bar b-bar--fill"><i style="--v:.83"></i></span><span class="b-num">83%</span><span class="b-todo">Upload</span></li>
+                <li><span>12 Example Street</span><span class="b-bar b-bar--fill"><i style="--v:.83"></i></span><span class="b-num">83%</span><span class="b-todo">Upload</span></li>
+                <li><span>7 Placeholder Lane</span><span class="b-bar b-bar--fill"><i style="--v:.83"></i></span><span class="b-num">83%</span><span class="b-todo">Upload</span></li>
+                <li><span>15/200 Mock Road</span><span class="b-bar b-bar--fill"><i style="--v:.83"></i></span><span class="b-num">83%</span><span class="b-todo">Upload</span></li>
+              </ul>
+            </div>
           </div>
-          <figure class="showcase__media">
-            <img class="shot" src="assets/screens/tab-data-health.webp" width="1130" height="833" loading="lazy" decoding="async"
-              alt="Data health with sample data: 76% complete. A list by property, least complete first, with buttons such as Add valuation, Add tenancy and Upload.">
-          </figure>
-        </div>
         </div>
 
-        <p class="later-note">Coming later: adviser sharing (in testing now), decision prompts, live rate tracking and
+        <p class="b-later">Coming later: adviser sharing (in testing now), decision prompts, live rate tracking and
           reminders. <a href="features/#coming-later">See what is planned</a></p>
       </div>
     </section>
 
     <!-- PRICING -->
-    <section id="pricing" class="pricing section">
+    <section id="pricing" class="pricing section b-pricing">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">PRICING</p>
           <h2>Start free. Upgrade when it pays for itself.</h2>
         </div>
 
@@ -536,7 +704,7 @@
         <input type="radio" name="billing" id="bill-monthly" class="billing__input">
         <div class="billing" role="radiogroup" aria-label="Billing period" aria-owns="bill-yearly bill-monthly">
           <label class="billing__opt billing__opt--yearly" for="bill-yearly">
-            Yearly <span class="billing__save">SAVE 40%</span>
+            Yearly <span class="billing__save">Save 40%</span>
           </label>
           <label class="billing__opt billing__opt--monthly" for="bill-monthly">Monthly</label>
         </div>
@@ -556,7 +724,6 @@
           </div>
 
           <div class="plan plan--featured">
-            <div class="plan__badge">MOST POPULAR</div>
             <div>
               <div class="plan__name">Pro</div>
               <div class="plan__price">
@@ -610,9 +777,7 @@
     <!-- FAQ: keep in sync with the FAQPage JSON-LD in <head> -->
     <section id="faq" class="faq section">
       <div class="container">
-        <div class="section-head">
-          <h2>Questions investors ask us</h2>
-        </div>
+        <h2 class="b-h2">Questions investors ask us</h2>
         <div class="faq__list">
           <details class="faq__item">
             <summary>What is Brikfolio?</summary>
@@ -650,14 +815,14 @@
       </div>
     </section>
 
-    <!-- FINAL CTA -->
-    <section class="section">
-      <div class="container cta">
-        <img class="brand-mark brand-mark--lg" src="assets/logo-mark.svg" alt="" width="332" height="355">
-        <h2>Stop leaving <span class="nowrap">$8K–22K</span> a year on the table</h2>
-        <p>Early access opens in 2026. Join the waitlist to be first in. No spam, ever.</p>
-        <a class="btn btn--primary" href="https://brikfolio.app/joinwishlist" data-cta="final">Join waitlist</a>
-        <div class="follow">
+    <!-- FINAL CTA: the file, closed -->
+    <section class="b-close">
+      <div class="container b-close__inner">
+        <img class="brand-mark b-close__mark" src="assets/logo-mark.svg" alt="" width="332" height="355">
+        <h2>Put every property in one file. Test the next move first.</h2>
+        <p>Join the waitlist and you will be among the first invited when early access opens. No spam, ever.</p>
+        <a class="b-btn" href="https://brikfolio.app/joinwishlist" data-cta="final">Join waitlist</a>
+        <div class="follow b-follow">
           <p class="follow__label">Follow <strong>@brikfolio</strong> for launch updates</p>
           <div class="follow__links">
             <a class="social-btn" href="https://www.facebook.com/brikfolio" target="_blank" rel="noopener" aria-label="Brikfolio on Facebook (@brikfolio)">
@@ -707,41 +872,8 @@
     </div>
   </footer>
 
-  <!-- Feature tabs: arrow keys, Home and End move between tabs (WAI-ARIA tabs pattern) -->
-  <script>
-    (function () {
-      var root = document.querySelector('[data-ftabs]');
-      if (!root) return;
-      var list = root.querySelector('[role="tablist"]');
-      var tabs = Array.prototype.slice.call(root.querySelectorAll('[role="tab"]'));
-      var panels = tabs.map(function (t) { return document.getElementById(t.getAttribute('aria-controls')); });
-      function select(i, focus) {
-        tabs.forEach(function (t, n) {
-          var on = n === i;
-          t.setAttribute('aria-selected', on ? 'true' : 'false');
-          t.tabIndex = on ? 0 : -1;
-          panels[n].hidden = !on;
-        });
-        if (focus) tabs[i].focus();
-      }
-      tabs.forEach(function (t, n) {
-        t.addEventListener('click', function () { select(n, false); });
-        t.addEventListener('keydown', function (e) {
-          var k = e.key, i = n;
-          if (k === 'ArrowRight') i = (n + 1) % tabs.length;
-          else if (k === 'ArrowLeft') i = (n - 1 + tabs.length) % tabs.length;
-          else if (k === 'Home') i = 0;
-          else if (k === 'End') i = tabs.length - 1;
-          else return;
-          e.preventDefault();
-          select(i, true);
-        });
-      });
-      list.hidden = false;
-      root.classList.add('ftabs--ready');
-      select(0, false);
-    })();
-  </script>
+  <!-- Home page: live demo sheets, counters, the stress slider and feature tabs -->
+  <script src="assets/js/home.js" defer></script>
 
   <!-- CTA tracking: one GA4 + Meta event per waitlist click, tagged with where it was clicked -->
   <script>

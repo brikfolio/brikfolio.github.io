@@ -67,6 +67,8 @@ const isDefaultImage = image === '/assets/og-image.png';
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" sizes="180x180" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="stylesheet" href="/assets/css/styles.css" />
+    <!-- Page stylesheets that build on styles.css (e.g. /features/ loads home.css) -->
+    <slot name="styles" />
 
     <!-- Analytics: GA4 + Meta Pixel (same set-up as public/index.html). -->
     <script is:inline>
