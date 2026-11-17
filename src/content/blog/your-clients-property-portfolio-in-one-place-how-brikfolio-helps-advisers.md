@@ -82,7 +82,7 @@ Your client stays in control of their data, and that protects your relationship 
 
 Advisers use Brikfolio free. Your clients pay for their own subscription.
 
-Apply on the **Join as an adviser** page [link to be added]. Once you're approved, add your first client and build their draft. Questions? Email support@brikfolio.com.au.
+Apply on the **Join as an adviser** page [link to be added]. Once you're approved, add your first client and build their draft. Questions? Email [support@brikfolio.com.au](mailto:support@brikfolio.com.au).
 
 ### Important information
 
