@@ -1,10 +1,11 @@
 ---
-title: "Your clients' property portfolio, in one place: how Brikfolio helps advisers"
+title: "Your clients' property portfolio, in one place: how Brikfolio helps
+  Business advisers"
 description: "Your clients' property portfolio, in one place: how Brikfolio helps advisers"
 date: 2026-11-18
 author: Brikfolio
 cover: /images/blog/brikfolio-adviser-blog-hero.png
-draft: true
+draft: false
 ---
 ## Every client brings a different pile of paper
 
